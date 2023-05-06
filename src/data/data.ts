@@ -1,20 +1,18 @@
-import { StaticImageData } from 'next/image';
-
-import brownie from '../assets/brownie.jpg';
-import cookiesIntegral from '../assets/cookies-integral.jpg';
-import cookies from '../assets/cookies.jpg';
-import enroladinhoGoiaba from '../assets/enroladinho-de-goiaba-vidro.jpg';
-import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa.jpg';
-import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela.jpg';
-import paoCaseiro from '../assets/pao-caseiro-italiano.jpg';
-import paoDeForma from '../assets/pao-forma-caseiro.jpg';
-import paoDeFormaSemiIntegral from '../assets/pao-forma-semi-integral.jpg';
-import waffle from '../assets/waffle-2-discos.jpg';
+import brownie from '../assets/brownie.svg';
+import cookiesIntegral from '../assets/cookies-integral.svg';
+import cookies from '../assets/cookies.svg';
+import enroladinhoGoiaba from '../assets/enroladinho-de-goiaba-vidro.svg';
+import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa.svg';
+import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela.svg';
+import paoCaseiro from '../assets/pao-caseiro-italiano.svg';
+import paoDeForma from '../assets/pao-forma-caseiro.svg';
+import paoDeFormaSemiIntegral from '../assets/pao-forma-semi-integral.svg';
+import waffle from '../assets/waffle-2-discos.svg';
 
 type DataProps = {
   name: string;
   price: string;
-  image: StaticImageData;
+  image: string;
   quantity: string;
   description: string;
 };
