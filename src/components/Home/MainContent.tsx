@@ -3,7 +3,7 @@ import React from 'react';
 
 const MainContent = () => {
   return (
-    <main className="relative z-10 flex flex-col items-start justify-start gap-20    w-[578px]">
+    <main className="relative z-10 flex flex-col items-start justify-start gap-20 w-[578px]">
       <h1 className="text-7xl font-bold text-white">Sabor com Amor</h1>
       <h3 className="text-3xl font-bold text-[#A66758]">
         Comida preparada com amor conquista paladar e coração.
