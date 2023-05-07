@@ -1,10 +1,10 @@
-import { Space_Grotesk } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 import { NavBar } from '@/components/NavBarComponent';
 
 import '../styles/globals.css';
 
-const space_grotesk = Space_Grotesk({
+const inter = Inter({
   weight: '400',
   subsets: ['latin']
 });
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={space_grotesk.className}>
+    <html lang="pt-BR" className={inter.className}>
       <body className="body">
         <NavBar />
         {children}
