@@ -10,10 +10,12 @@ const Page = () => {
   const products: Array<DataProps> = data;
 
   return (
-    <div className="grid grid-cols-4 place-items-center gap-20 pt-32 pb-20 relative z-0">
-      {products.map((product) => (
-        <ProductCards key={product.name} product={product} />
-      ))}
+    <div className="flex items-center justify-center">
+      <div className="w-4/5 grid grid-cols-4 place-items-center gap-20 pt-32 pb-20 relative z-0">
+        {products.map((product, i) => (
+          <ProductCards key={product.name} product={product} index={i} />
+        ))}
+      </div>
     </div>
   );
 };
