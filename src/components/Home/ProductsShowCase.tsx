@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -6,10 +8,17 @@ import cookie from '../../assets/cookies.svg';
 import paoCaseiro from '../../assets/pao-caseiro-italiano 1.svg';
 import waffle from '../../assets/waffle-2-discos 1.svg';
 
+import { motion as m } from 'framer-motion';
+
 const ProductsShowCase = () => {
   return (
     <aside className="flex flex-col items-end justify-center w-[600px]">
-      <span className="flex items-center justify-start w-full">
+      <m.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.2 }}
+        className="flex items-center justify-start w-full"
+      >
         <Image
           src={waffle}
           alt="waffle illustration"
@@ -17,21 +26,31 @@ const ProductsShowCase = () => {
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Waffle</p>
-          <span className="h-[1px] w-28 bg-white"></span>
+          <m.span className="h-[1px] w-28 bg-white"></m.span>
         </div>
-      </span>
-      <span className="flex items-center justify-end w-full">
+      </m.span>
+      <m.span
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.4 }}
+        className="flex items-center justify-end w-full"
+      >
         <div className="flex flex-col justify-center text-white items-center">
           <p>Cookies</p>
-          <span className="h-[1px] w-28 bg-white"></span>
+          <m.span className="h-[1px] w-28 bg-white"></m.span>
         </div>
         <Image
           src={cookie}
           alt="cookie illustration"
           className="w-44 h-44 rounded-full border-2 border-[#694A43]"
         />
-      </span>
-      <span className="flex items-center justify-start w-full">
+      </m.span>
+      <m.span
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.6 }}
+        className="flex items-center justify-start w-full"
+      >
         <Image
           src={brownie}
           alt="brownie illustration"
@@ -39,20 +58,25 @@ const ProductsShowCase = () => {
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Brownie</p>
-          <span className="h-[1px] w-28 bg-white"></span>
+          <m.span className="h-[1px] w-28 bg-white"></m.span>
         </div>
-      </span>
-      <span className="flex items-center justify-end w-full">
+      </m.span>
+      <m.span
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.8 }}
+        className="flex items-center justify-end w-full"
+      >
         <div className="flex flex-col justify-center text-white items-center">
           <p>Pão Caseiro</p>
-          <span className="h-[1px] w-40 bg-white"></span>
+          <m.span className="h-[1px] w-40 bg-white"></m.span>
         </div>
         <Image
           src={paoCaseiro}
           alt="paoCaseiro illustration"
           className="w-44 h-44 rounded-full border-2 border-[#694A43]"
         />
-      </span>
+      </m.span>
     </aside>
   );
 };
