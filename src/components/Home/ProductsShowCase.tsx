@@ -12,7 +12,7 @@ import { motion as m } from 'framer-motion';
 
 const ProductsShowCase = () => {
   return (
-    <aside className="flex flex-col items-end justify-center w-[600px]">
+    <aside className="flex flex-col items-end justify-center w-full md:w-[600px] p-4 xl:p-0 gap-14 lg:gap-0">
       <m.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -22,7 +22,7 @@ const ProductsShowCase = () => {
         <Image
           src={waffle}
           alt="waffle illustration"
-          className="w-44 h-44 rounded-full border-2 border-[#694A43]"
+          className="w-32 h-32 md:w-36 md:h-36 xl:w-44 xl:h-44 rounded-full border-2 border-[#694A43]"
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Waffle</p>
@@ -42,7 +42,7 @@ const ProductsShowCase = () => {
         <Image
           src={cookie}
           alt="cookie illustration"
-          className="w-44 h-44 rounded-full border-2 border-[#694A43]"
+          className="w-32 h-32 md:w-36 md:h-36 xl:w-44 xl:h-44 rounded-full border-2 border-[#694A43]"
         />
       </m.span>
       <m.span
@@ -54,7 +54,7 @@ const ProductsShowCase = () => {
         <Image
           src={brownie}
           alt="brownie illustration"
-          className="w-44 h-44 rounded-full border-2 border-[#694A43]"
+          className="w-32 h-32 md:w-36 md:h-36 xl:w-44 xl:h-44 rounded-full border-2 border-[#694A43]"
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Brownie</p>
@@ -69,12 +69,12 @@ const ProductsShowCase = () => {
       >
         <div className="flex flex-col justify-center text-white items-center">
           <p>Pão Caseiro</p>
-          <m.span className="h-[1px] w-40 bg-white"></m.span>
+          <m.span className="h-[1px] w-32 bg-white"></m.span>
         </div>
         <Image
           src={paoCaseiro}
           alt="paoCaseiro illustration"
-          className="w-44 h-44 rounded-full border-2 border-[#694A43]"
+          className="w-32 h-32 md:w-36 md:h-36 xl:w-44 xl:h-44 rounded-full border-2 border-[#694A43]"
         />
       </m.span>
     </aside>
