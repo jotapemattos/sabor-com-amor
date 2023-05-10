@@ -10,17 +10,17 @@ export function NavBar() {
       />
       <span className="flex gap-20 items-center text-white font-bold">
         <Link href={'/'}>
-          <p className="hover:text-[#694A43] transition-colors duration-300">
+          <p className="hover:text-[#cea17c] transition-colors duration-300">
             Sobre
           </p>
         </Link>
         <Link href={'/produtos'}>
-          <p className="hover:text-[#694A43] transition-colors duration-300">
+          <p className="hover:text-[#cea17c] transition-colors duration-300">
             Produtos
           </p>
         </Link>
         <Link href={'/encomendas'}>
-          <p className="hover:text-[#694A43] transition-colors duration-300">
+          <p className="hover:text-[#cea17c] transition-colors duration-300">
             Encomendas
           </p>
         </Link>
