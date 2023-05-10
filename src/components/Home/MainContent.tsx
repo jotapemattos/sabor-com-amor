@@ -20,7 +20,7 @@ const MainContent = () => {
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.3 }}
-        className="text-2xl xl:text-3xl font-bold text-[#A66758]"
+        className="text-2xl xl:text-3xl font-bold text-[#cea17c]"
       >
         Comida preparada com amor conquista paladar e coração.
       </m.h3>
@@ -28,7 +28,7 @@ const MainContent = () => {
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.5 }}
-        className="text-base xl:text-lg text-white text-start md:text-justify lg:text-start"
+        className="text-base xl:text-base text-white text-start md:text-justify lg:text-start"
       >
         Venho de uma família que tem ótimas memórias da comida afetiva.
         Lembranças com cheiro e sabor ao redor da mesa. Minha mãe sempre
@@ -44,7 +44,7 @@ const MainContent = () => {
           initial={{ opacity: 0, y: 1 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, delay: 0.7 }}
-          className="bg-[#694A43] w-[150px] xl:w-[219px] h-14 rounded-2xl text-white hover:bg-[#3b2a26] transition-colors duration-300 "
+          className="bg-[#cea17c] w-[150px] xl:w-[219px] h-14 rounded-2xl text-[#081930] font-bold hover:bg-[#644f3d] transition-all duration-300 "
         >
           Ver produtos
         </m.button>
