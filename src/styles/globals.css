@@ -11,11 +11,11 @@ hmtl {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: rgba(13,12,15,1);
+    background-color: #0f0f0f;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(58,47,44,1);
+    background-color: #474746;
     border-radius: 5px;
 }
 
