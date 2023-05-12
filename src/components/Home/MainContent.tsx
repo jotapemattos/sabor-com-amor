@@ -30,14 +30,14 @@ const MainContent = () => {
         transition={{ duration: 0.2, delay: 0.5 }}
         className="text-base xl:text-base text-white text-start md:text-justify lg:text-start"
       >
-        Venho de uma família que tem ótimas memórias da comida afetiva.
+        &quot;Venho de uma família que tem ótimas memórias da comida afetiva.
         Lembranças com cheiro e sabor ao redor da mesa. Minha mãe sempre
         preparando tudo em casa, as refeições, sobremesas, bolos, pães e os
         doces de frutas que até hoje faz como ninguém. Não sei direito quando
         comecei, fui acumulando conhecimento, técnicas e novas receitas, mas
         ainda preparo algumas “a olho”. O cookie foi o primeiro produto que
         comercializei e até hoje está entre os mais procurados. Minha refeição
-        preferida é o café/lanche e até por isso amo preparar pães.
+        preferida é o café/lanche e até por isso amo preparar pães.&quot;
       </m.p>
       <Link href={'/produtos'}>
         <m.button
