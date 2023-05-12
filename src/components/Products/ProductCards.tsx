@@ -18,8 +18,10 @@ const ProductCards = ({ product, index }: ProductProps) => {
         transition={{ duration: 0.2, delay: 0.1 * (index + 2) }}
         className="w-[250px] h-[342px] bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-3xl relative shadow-xl gap-4 rounded-lg "
       >
-        <span className="absolute bg-[#181516] rounded-full p-2 right-2 top-2">
-          <p className="text-sm text-white">R$ {product.price}</p>
+        <span className="absolute bg-[#081930] rounded-full p-2 right-2 top-2">
+          <p className="text-sm text-white font-extrabold">
+            R$ {product.price}
+          </p>
         </span>
         <Image
           src={product.image}
@@ -28,7 +30,6 @@ const ProductCards = ({ product, index }: ProductProps) => {
         />
         <main className="flex flex-col gap-4 p-2">
           <h1 className="text-lg text-white ">{`${product.name} (${product.quantity})`}</h1>
-          {/* <p className="text-sm text-">{product.description}</p> */}
         </main>
       </m.div>
     </>
