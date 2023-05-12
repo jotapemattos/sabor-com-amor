@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
-  },
-}
+    appDir: true
+  }
+};
 
-module.exports = nextConfig
+// eslint-disable-next-line no-undef
+module.exports = nextConfig;
