@@ -22,3 +22,7 @@ hmtl {
 .body {
     background: radial-gradient(circle, rgba(8, 25, 48,1) 0%, rgba(1, 10, 23,1) 70%);
 }
+
+.mobilemenu {
+    background: radial-gradient(circle, rgba(8, 25, 48,1) 0%, rgba(1, 10, 23,1) 70%);
+}
