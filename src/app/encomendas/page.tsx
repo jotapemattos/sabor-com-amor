@@ -46,21 +46,28 @@ const Page = () => {
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, delay: 0.8 }}
-          href="/"
+          href="https://api.whatsapp.com/send?phone=5511971673333"
         >
-          <button className="bg-[#cea17c] w-[150px] xl:w-[219px] h-14 rounded-2xl text-[#081930] font-bold hover:bg-[#644f3d] transition-all duration-300">
+          <button className="bg-[#cea17c] w-[150px] xl:w-[219px] h-14 rounded-2xl p-2 text-[#081930] font-bold hover:bg-[#644f3d] transition-all duration-300">
             Enviar mensagem
           </button>
         </m.a>
       </main>
-      <Image
-        src={delivery}
-        alt="delivery box illustration"
-        width={500}
-        height={500}
-        className="rounded-full absolute opacity-20"
-        priority
-      />
+      <m.div
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.5 }}
+        className="rounded-full absolute"
+      >
+        <Image
+          src={delivery}
+          alt="delivery box illustration"
+          width={500}
+          height={500}
+          priority
+          className="opacity-20"
+        />
+      </m.div>
       <Image
         src={flower}
         alt="flower illustration"
