@@ -47,6 +47,7 @@ const Page = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, delay: 0.8 }}
           href="https://api.whatsapp.com/send?phone=5511971673333"
+          target="_blank"
         >
           <button className="bg-[#cea17c] w-[150px] xl:w-[219px] h-14 rounded-2xl p-2 text-[#081930] font-bold hover:bg-[#644f3d] transition-all duration-300">
             Enviar mensagem
