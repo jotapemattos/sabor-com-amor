@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import React from 'react';
 
+import Button from '../Button';
+
 import { motion as m } from 'framer-motion';
 
 const MainContent = () => {
@@ -39,16 +41,15 @@ const MainContent = () => {
         comercializei e até hoje está entre os mais procurados. Minha refeição
         preferida é o café/lanche e até por isso amo preparar pães.&quot;
       </m.p>
-      <Link href={'/produtos'}>
-        <m.button
-          initial={{ opacity: 0, y: 1 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.7 }}
-          className="bg-[#cea17c] w-[150px] xl:w-[219px] h-14 rounded-2xl text-[#081930] font-bold hover:bg-[#644f3d] transition-all duration-300 "
-        >
-          Ver produtos
-        </m.button>
-      </Link>
+      <m.div
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.7 }}
+      >
+        <Link href={'/produtos'}>
+          <Button>Ver produtos</Button>
+        </Link>
+      </m.div>
     </main>
   );
 };
