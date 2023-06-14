@@ -2,6 +2,7 @@ import brownie from '../assets/brownie.svg';
 import cookiesIntegral from '../assets/cookies-integral 1.svg';
 import cookies from '../assets/cookies.svg';
 import enroladinhoGoiaba from '../assets/enroladinho-de-goiaba-vidro 1.svg';
+import baguete from '../assets/pao-baguete.svg';
 import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg';
 import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg';
 import paoCaseiro from '../assets/pao-caseiro-italiano 1.svg';
@@ -50,6 +51,13 @@ export const data: DataProps[] = [
     name: 'Pão de forma caseiro',
     price: '12,00',
     image: paoDeForma,
+    quantity: '1Un.',
+    description: ''
+  },
+  {
+    name: 'Pão Baguete',
+    price: '15,00',
+    image: baguete,
     quantity: '1Un.',
     description: ''
   },
