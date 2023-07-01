@@ -6,7 +6,7 @@ import HamburgerIcon from './HamburguerIcon';
 
 export function NavBar() {
   return (
-    <nav className="w-screen h-24 fixed z-20 inset-0 bg-transparent backdrop-blur-lg flex items-center justify-between lg:justify-around p-4 lg:p-0 shadow-xl">
+    <nav className="header w-screen h-24 fixed z-20 inset-0 flex items-center justify-between lg:justify-around p-4 lg:p-0 shadow-xl">
       <img
         src="/logo.svg"
         alt="logo-image"
