@@ -6,6 +6,7 @@ import baguete from '../assets/pao-baguete.svg';
 import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg';
 import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg';
 import paoCaseiro from '../assets/pao-caseiro-italiano 1.svg';
+import paoDeMilho from '../assets/pao-de-milho.svg';
 import paoDeForma from '../assets/pao-forma-caseiro 1.svg';
 import paoDeFormaSemiIntegral from '../assets/pao-forma-semi-integral 1.svg';
 import waffle from '../assets/waffle-2-discos 1.svg';
@@ -58,6 +59,13 @@ export const data: DataProps[] = [
     name: 'Pão Baguete',
     price: '15,00',
     image: baguete,
+    quantity: '1Un.',
+    description: ''
+  },
+  {
+    name: 'Pão de Milho Verde ',
+    price: '20,00',
+    image: paoDeMilho,
     quantity: '1Un.',
     description: ''
   },
