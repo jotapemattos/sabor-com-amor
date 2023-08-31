@@ -1,7 +1,9 @@
+import enroladinhoGoiabaPacote from '../assets/bolachinha-com-goiabada-pcte.svg';
+import enroladinhoGoiaba from '../assets/bolachinha-de-goiaba-vidro 1.svg';
 import brownie from '../assets/brownie.svg';
 import cookiesIntegral from '../assets/cookies-integral 1.svg';
 import cookies from '../assets/cookies.svg';
-import enroladinhoGoiaba from '../assets/enroladinho-de-goiaba-vidro 1.svg';
+import geleia from '../assets/geleia.svg';
 import baguete from '../assets/pao-baguete.svg';
 import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg';
 import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg';
@@ -29,14 +31,14 @@ export const data: DataProps[] = [
   },
   {
     name: 'Pão caseiro tipo italiano com mussarela',
-    price: '23,00',
+    price: '25,00',
     image: paoCaseiroMussarela,
     quantity: '1Un.',
     description: ''
   },
   {
     name: 'Pão caseiro tipo italiano com linguiça calabresa',
-    price: '23,00',
+    price: '25,00',
     image: paoCaseiroCalabresa,
     quantity: '1Un.',
     description: ''
@@ -70,6 +72,13 @@ export const data: DataProps[] = [
     description: ''
   },
   {
+    name: 'Geleia',
+    price: '15,00',
+    image: geleia,
+    quantity: '1Un.',
+    description: ''
+  },
+  {
     name: 'Brownie',
     price: '10,00',
     image: brownie,
@@ -82,6 +91,13 @@ export const data: DataProps[] = [
     image: enroladinhoGoiaba,
     quantity: '170g',
     description: 'Embalagem de vidro'
+  },
+  {
+    name: 'Enroladinho de goiabada',
+    price: '14,00',
+    image: enroladinhoGoiabaPacote,
+    quantity: '200g',
+    description: 'Pacote'
   },
   {
     name: 'Massa de waffle',
