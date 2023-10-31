@@ -4,6 +4,7 @@ import brownie from '../assets/brownie.svg';
 import cookiesIntegral from '../assets/cookies-integral 1.svg';
 import cookies from '../assets/cookies.svg';
 import geleia from '../assets/geleia.svg';
+import paoAboboraCabotia from '../assets/pao-abobora-cabotia.svg';
 import baguete from '../assets/pao-baguete.svg';
 import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg';
 import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg';
@@ -65,9 +66,16 @@ export const data: DataProps[] = [
     description: ''
   },
   {
-    name: 'Pão de Milho Verde ',
+    name: 'Pão de Milho Verde',
     price: '20,00',
     image: paoDeMilho,
+    quantity: '1Un.',
+    description: ''
+  },
+  {
+    name: 'Pão de Abóbora Cabotia (Vegano)',
+    price: '15,00',
+    image: paoAboboraCabotia,
     quantity: '1Un.',
     description: ''
   },
