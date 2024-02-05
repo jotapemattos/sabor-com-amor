@@ -26,7 +26,7 @@ const ProductsShowCase = () => {
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Waffle</p>
-          <m.span className="h-[1px] w-28 bg-[#cea17c]"></m.span>
+          <m.span className="h-[1px] w-28 bg-[#cea17c]" />
         </div>
       </m.span>
       <m.span
@@ -37,7 +37,7 @@ const ProductsShowCase = () => {
       >
         <div className="flex flex-col justify-center text-white items-center">
           <p>Cookies</p>
-          <m.span className="h-[1px] w-28 bg-[#cea17c]"></m.span>
+          <m.span className="h-[1px] w-28 bg-[#cea17c]" />
         </div>
         <Image
           src={cookie}
@@ -58,7 +58,7 @@ const ProductsShowCase = () => {
         />
         <div className="flex flex-col justify-center text-white items-center">
           <p>Brownie</p>
-          <m.span className="h-[1px] w-28 bg-[#cea17c]"></m.span>
+          <m.span className="h-[1px] w-28 bg-[#cea17c]" />
         </div>
       </m.span>
       <m.span
@@ -69,7 +69,7 @@ const ProductsShowCase = () => {
       >
         <div className="flex flex-col justify-center text-white items-center">
           <p>Pão Caseiro</p>
-          <m.span className="h-[1px] w-32 bg-[#cea17c]"></m.span>
+          <m.span className="h-[1px] w-32 bg-[#cea17c]" />
         </div>
         <Image
           src={paoCaseiro}

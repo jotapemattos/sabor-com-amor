@@ -6,16 +6,16 @@ import '../styles/globals.css';
 
 const inter = Inter({
   weight: '400',
-  subsets: ['latin']
+  subsets: ['latin'],
 });
 
 export const metadata = {
   title: 'Sabor com Amor',
-  description: 'Sabor com Amor landing page'
+  description: 'Sabor com Amor landing page',
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

@@ -25,7 +25,7 @@ const ProductCards = ({ product, index }: ProductProps) => {
         </span>
         <Image
           src={product.image}
-          alt={product.name + 'image'}
+          alt={`${product.name}image`}
           width={500}
           height={500}
           className="rounded-t-lg aspect-square object-cover"

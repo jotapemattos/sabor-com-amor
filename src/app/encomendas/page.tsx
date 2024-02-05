@@ -49,6 +49,7 @@ const Page = () => {
           transition={{ duration: 0.2, delay: 0.8 }}
           href="https://api.whatsapp.com/send?phone=5511971673333"
           target="_blank"
+          rel="noreferrer"
         >
           <Button>Enviar Mensagem</Button>
         </m.a>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { data, DataProps } from '../../data/data';
+import { DataProps, data } from '../../data/data';
 
 import ProductCards from '@/components/Products/ProductCardsComponent';
 
