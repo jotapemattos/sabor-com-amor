@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-import brownie from '../../assets/brownie.svg';
-import cookie from '../../assets/cookies.svg';
-import paoCaseiro from '../../assets/pao-caseiro-italiano 1.svg';
-import waffle from '../../assets/waffle-2-discos 1.svg';
+import brownie from '../../../assets/brownie.svg';
+import cookie from '../../../assets/cookies.svg';
+import paoCaseiro from '../../../assets/pao-caseiro-italiano 1.svg';
+import waffle from '../../../assets/waffle-2-discos 1.svg';
 
 import { motion as m } from 'framer-motion';
 

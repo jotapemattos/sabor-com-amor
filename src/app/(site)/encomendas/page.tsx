@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-import delivery from '../../assets/delivery-box.png';
-import flower from '../../assets/flor.png';
+import delivery from '../../../assets/delivery-box.png';
+import flower from '../../../assets/flor.png';
 
-import Button from '@/components/ButtonComponent';
+import Button from '@/components/site/ButtonComponent';
 import { motion as m } from 'framer-motion';
 
 const Page = () => {

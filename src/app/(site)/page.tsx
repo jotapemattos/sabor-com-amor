@@ -1,5 +1,5 @@
-import MainContent from '@/components/Home/MainContentComponent';
-import ProductsShowCase from '@/components/Home/ProductsShowCaseComponent';
+import MainContent from '@/components/site/Home/MainContentComponent';
+import ProductsShowCase from '@/components/site/Home/ProductsShowCaseComponent';
 
 export default function Home() {
   return (

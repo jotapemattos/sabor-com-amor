@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { DataProps, data } from '../../data/data';
+import { DataProps, data } from '../../../data/data';
 
-import ProductCards from '@/components/Products/ProductCardsComponent';
+import ProductCards from '@/components/site/Products/ProductCardsComponent';
 
 const Page = () => {
   const products: Array<DataProps> = data;

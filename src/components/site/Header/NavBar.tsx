@@ -9,7 +9,7 @@ export function NavBar() {
     <nav className="header w-screen h-24 fixed z-20 inset-0 flex items-center justify-between lg:justify-around p-4 lg:p-0 shadow-xl">
       <Link href={'/'}>
         <img
-          src="/logo.svg"
+          src="/logo.png"
           alt="logo-image"
           className="w-16 h-16 rounded-full"
         />
