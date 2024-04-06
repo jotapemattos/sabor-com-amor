@@ -19,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.className}>
-      <body className="body" suppressHydrationWarning={true}>
+      <body
+        className="bg-noise-texture h-full bg-zinc-200 w-full"
+        suppressHydrationWarning={true}
+      >
         {children}
       </body>
     </html>

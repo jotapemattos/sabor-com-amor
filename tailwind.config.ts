@@ -18,6 +18,9 @@ const config = {
       }
     },
     extend: {
+      backgroundImage: {
+        'noise-texture': 'url(/noise-texture.png)'
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
