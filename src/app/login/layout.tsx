@@ -1,11 +1,14 @@
-import { inter, telma } from '../fonts/index';
+import { inter, telma } from '../fonts';
 
 import '../../styles/globals.css';
 import clsx from 'clsx';
 
 export const metadata = {
-  title: 'Sabor com Amor - Admin',
-  description: 'Página de gerenciamento de produtos'
+  title: 'Sabor com AMor - Login',
+  description: 'Página de login',
+  icons: {
+    icon: '/logo.png'
+  }
 };
 
 export default function RootLayout({

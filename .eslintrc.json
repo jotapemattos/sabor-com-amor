@@ -40,7 +40,7 @@
     "import-helpers/order-imports": [
       "warn",
       {
-          "newlinesBetween": "always",
+          "newlinesBetween": "",
           "groups": [
               ["/^react/", "/^next/", "/@next/"],
               "/module/",

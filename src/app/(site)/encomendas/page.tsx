@@ -6,7 +6,6 @@ import React from 'react';
 import delivery from '../../../assets/delivery-box.png';
 import flower from '../../../assets/flor.png';
 
-import Button from '@/components/site/ButtonComponent';
 import { motion as m } from 'framer-motion';
 
 const Page = () => {
@@ -50,9 +49,7 @@ const Page = () => {
           href="https://api.whatsapp.com/send?phone=5511971673333"
           target="_blank"
           rel="noreferrer"
-        >
-          <Button>Enviar Mensagem</Button>
-        </m.a>
+        ></m.a>
       </main>
       <m.div
         initial={{ opacity: 0, y: 5 }}

@@ -21,6 +21,10 @@ const config = {
       backgroundImage: {
         'noise-texture': 'url(/noise-texture.png)'
       },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        serif: ['var(--font-telma)']
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
