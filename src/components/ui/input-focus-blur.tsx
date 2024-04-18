@@ -18,7 +18,7 @@ const inputFocusBlurStyles = tv({
   slots: {
     baseStyle: `w-full h-[42px] px-3 flex items-center rounded-md border border-zinc-300 focus-within:border-neutral-200 
     bg-zinc-200 transition-all duration-200 relative data-[filled=true]:border-neutral-200`,
-    inputStyle: `flex-1 h-full py-2 outline-none text-sm text-neutral-800 bg-transparent relative z-[9999] placeholder:sr-only 
+    inputStyle: `flex-1 h-full py-2 outline-none text-sm text-neutral-800 bg-transparent relative z-[99999] placeholder:sr-only 
     disabled:cursor-not-allowed`,
     placeholderStyle: `text-sm text-neutral-500 absolute left-3`,
     feedbackErrorStyle: `flex items-center gap-1 text-xs text-red-300 mt-1`
