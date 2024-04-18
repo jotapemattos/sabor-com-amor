@@ -22,7 +22,7 @@ export default function RootLayout({
         className={clsx(
           inter.className,
           telma.variable,
-          'font-sans antialiased bg-noise-texture'
+          'antialiased bg-noise-texture'
         )}
       >
         {children}
