@@ -53,7 +53,7 @@ export const data: DataProps[] = [
   },
   {
     name: 'Pão de forma caseiro',
-    price: '12,00',
+    price: '14,00',
     image: paoDeForma,
     quantity: '1Un.',
     description: ''
@@ -81,7 +81,7 @@ export const data: DataProps[] = [
   },
   {
     name: 'Geleia',
-    price: '15,00',
+    price: '18,00',
     image: geleia,
     quantity: '1Un.',
     description: ''
@@ -116,7 +116,7 @@ export const data: DataProps[] = [
   },
   {
     name: 'Cookie com gotas de chocolate meio amargo',
-    price: '12,00',
+    price: '14,00',
     image: cookies,
     quantity: '200g',
     description: ''
