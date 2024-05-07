@@ -1,3 +1,3 @@
 export function AdminNavbar() {
-  return;
+  return
 }
