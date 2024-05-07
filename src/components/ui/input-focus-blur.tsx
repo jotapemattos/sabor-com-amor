@@ -1,18 +1,18 @@
 // @NOTE: in case you are using Next.js
-'use client';
+'use client'
 
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef, useState, useCallback } from 'react'
 
-import { motion, AnimationProps } from 'framer-motion';
-import { AlertCircle } from 'lucide-react';
-import { tv } from 'tailwind-variants';
+import { motion, AnimationProps } from 'framer-motion'
+import { AlertCircle } from 'lucide-react'
+import { tv } from 'tailwind-variants'
 
 interface InputFocusBlurProps extends React.ComponentProps<'input'> {
-  feedbackError?: string;
+  feedbackError?: string
 }
 
-const EIXO_X_PLACEHOLDER = 24;
-const STANDARD_DURATION = 0.3;
+const EIXO_X_PLACEHOLDER = 24
+const STANDARD_DURATION = 0.3
 
 const inputFocusBlurStyles = tv({
   slots: {
@@ -35,28 +35,27 @@ const inputFocusBlurStyles = tv({
       }
     }
   }
-});
+})
 
-const { baseStyle, inputStyle, placeholderStyle, feedbackErrorStyle } =
-  inputFocusBlurStyles();
+const { baseStyle, inputStyle, placeholderStyle, feedbackErrorStyle } = inputFocusBlurStyles()
 
 export const InputFocusBlur = forwardRef<HTMLInputElement, InputFocusBlurProps>(
   ({ placeholder, feedbackError = '', disabled, value, ...props }, ref) => {
-    const [isFocus, setIsFocus] = useState(false);
-    const [internalValue, setInternalValue] = useState('');
+    const [isFocus, setIsFocus] = useState(false)
+    const [internalValue, setInternalValue] = useState('')
 
     const handle = useCallback((type: 'focus' | 'blur') => {
-      setIsFocus(type === 'focus');
-    }, []);
+      setIsFocus(type === 'focus')
+    }, [])
 
     function observeFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
-      setInternalValue(event.target.value);
+      setInternalValue(event.target.value)
     }
 
-    const isFilled = internalValue.length > 0 || !!value;
-    const isFocusOrFilled = isFocus || isFilled;
+    const isFilled = internalValue.length > 0 || !!value
+    const isFocusOrFilled = isFocus || isFilled
 
-    const isError = feedbackError.length > 0 && !disabled;
+    const isError = feedbackError.length > 0 && !disabled
 
     const placeholderAnimation: AnimationProps['animate'] = isFocusOrFilled
       ? {
@@ -66,14 +65,11 @@ export const InputFocusBlur = forwardRef<HTMLInputElement, InputFocusBlurProps>(
         }
       : {
           x: 0
-        };
+        }
 
     return (
       <div className="w-full">
-        <div
-          className={baseStyle({ error: isError, disabled })}
-          data-filled={isFilled}
-        >
+        <div className={baseStyle({ error: isError, disabled })} data-filled={isFilled}>
           <input
             ref={ref}
             type="text"
@@ -96,8 +92,7 @@ export const InputFocusBlur = forwardRef<HTMLInputElement, InputFocusBlurProps>(
             transition={{
               easings: ['easeOut'],
               duration: STANDARD_DURATION
-            }}
-          >
+            }}>
             {placeholder}
           </motion.span>
         </div>
@@ -113,15 +108,14 @@ export const InputFocusBlur = forwardRef<HTMLInputElement, InputFocusBlurProps>(
             }}
             transition={{
               duration: STANDARD_DURATION
-            }}
-          >
+            }}>
             <AlertCircle size={12} />
             {feedbackError}
           </motion.span>
         )}
       </div>
-    );
+    )
   }
-);
+)
 
-InputFocusBlur.displayName = 'InputFocusBlur';
+InputFocusBlur.displayName = 'InputFocusBlur'
