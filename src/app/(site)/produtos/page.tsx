@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
 const Page = () => {
   return (
@@ -9,7 +9,7 @@ const Page = () => {
         Produtos
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

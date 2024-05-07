@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import React from 'react';
+import Image from 'next/image'
+import React from 'react'
 
-import delivery from '../../../assets/delivery-box.png';
-import flower from '../../../assets/flor.png';
+import delivery from '../../../assets/delivery-box.png'
+import flower from '../../../assets/flor.png'
 
-import { motion as m } from 'framer-motion';
+import { motion as m } from 'framer-motion'
 
 const Page = () => {
   return (
@@ -17,29 +17,25 @@ const Page = () => {
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl text-white font-bold"
-          >
+            className="text-3xl md:text-4xl lg:text-5xl text-white font-bold">
             Entre em contato e faça seu pedido!
           </m.h1>
           <m.p
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.4 }}
-            className="text-lg md:text-xl lg:text-2xl text-[#cea17c] font-bold md:text-center"
-          >
-            Caso tenha criado interesse por algum de nossos produtos, não perca
-            a oportunidade de fazer sua encomenda.{' '}
+            className="text-lg md:text-xl lg:text-2xl text-[#cea17c] font-bold md:text-center">
+            Caso tenha criado interesse por algum de nossos produtos, não perca a oportunidade de fazer sua encomenda.{' '}
           </m.p>
         </div>
         <m.div
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, delay: 0.6 }}
-          className="flex flex-col items-center justify-center md:w-[600px]"
-        >
+          className="flex flex-col items-center justify-center md:w-[600px]">
           <p className="text-sm lg:text-base font-bold text-white text-center">
-            Para encomendar basta enviar uma mensagem pelo WhatsApp informando
-            o(s) produto(s) que deseja com a quantidade ao lado.
+            Para encomendar basta enviar uma mensagem pelo WhatsApp informando o(s) produto(s) que deseja com a
+            quantidade ao lado.
           </p>
         </m.div>
         <m.a
@@ -48,15 +44,13 @@ const Page = () => {
           transition={{ duration: 0.2, delay: 0.8 }}
           href="https://api.whatsapp.com/send?phone=5511971673333"
           target="_blank"
-          rel="noreferrer"
-        ></m.a>
+          rel="noreferrer"></m.a>
       </main>
       <m.div
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, delay: 0.5 }}
-        className="rounded-full absolute"
-      >
+        className="rounded-full absolute">
         <Image
           src={delivery}
           alt="delivery box illustration"
@@ -72,7 +66,7 @@ const Page = () => {
         className="rounded-full absolute bottom-0 lg:left-2 xl:left-20 hidden lg:block"
       />
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
