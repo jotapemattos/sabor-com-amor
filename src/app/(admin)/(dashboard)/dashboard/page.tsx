@@ -9,5 +9,12 @@ export default async function Admin() {
   } = await supabase.auth.getUser()
 
   if (!user) redirect('/login')
-  return <div>hello world</div>
+  const handleLogout = () => {
+    console.log('po')
+  }
+  return (
+    <div>
+      <button formAction={handleLogout}>Logout</button>
+    </div>
+  )
 }

@@ -3,16 +3,14 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { login } from '../../actions/login'
-
+import { login } from '@/app/actions/loginComponent'
 import { Button } from '@/components/ui/buttonComponent'
 import { InputFocusBlur } from '@/components/ui/input-focus-blurComponent'
 import { LoginSchema, loginSchema } from '@/lib/schemaComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Eye, EyeOff, Loader2, LogIn } from 'lucide-react'
 import { toast } from 'sonner'
-
-export default function Login() {
+export function Form() {
   const [shouldShowPassword, setShouldShowPassword] = useState(false)
 
   const {
@@ -34,25 +32,24 @@ export default function Login() {
       }
     }
   }
-
   return (
-    <main className="min-h-screen h-full flex flex-col items-center justify-evenly">
-      <header className="flex flex-col items-center justify-center gap-8">
-        <h3 className="font-serif text-3xl">Sabor com Amor</h3>
-        <h1 className="font-medium text-4xl font-sans">Bem vindo(a) de volta</h1>
-      </header>
+    <>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="bg-zinc-50 flex flex-col items-start justify-between min-w-96 p-8 rounded-md gap-8 border-zinc-200 border">
+        className="bg-zinc-50 flex flex-col items-start justify-between w-96 p-8 rounded-lg gap-8 border-zinc-200 border">
+        <span className="space-y-1">
+          <h1 className="font-medium text-2xl font-sans">Bem vinda de volta</h1>
+          <p className="text-neutral-500 text-md">Faça login para gerenciar sua loja.</p>
+        </span>
         <span className="flex w-full flex-col items-start gap-2">
           <label htmlFor="email">Email</label>
-          <InputFocusBlur placeholder="seuemail@exemplo.com" required {...register('email')} />
+          <InputFocusBlur placeholder="seuemail@exemplo.com" {...register('email')} />
+          {errors.email ? <p className="text-sm text-red-600">{errors.email.message}</p> : null}
         </span>
         <span className="flex w-full flex-col items-start gap-2">
           <label htmlFor="password">Senha</label>
-          <div className="relative mb-6 flex items-center w-full">
+          <div className="relative flex items-center w-full">
             <InputFocusBlur
-              required
               placeholder="•••••••"
               type={shouldShowPassword ? 'text' : 'password'}
               {...register('password')}
@@ -71,11 +68,12 @@ export default function Login() {
               />
             </button>
           </div>
+          {errors.password ? <p className="text-sm text-red-600">{errors.password.message}</p> : null}
         </span>
         <Button
           variant="default"
           size="sm"
-          className="group flex items-center justify-center gap-2 w-full"
+          className="text-md px-4 py-2 rounded-lg shadow w-full group bg-zinc-800 space-x-2"
           type="submit"
           disabled={isSubmitting}>
           {isSubmitting ? (
@@ -91,6 +89,6 @@ export default function Login() {
           )}
         </Button>
       </form>
-    </main>
+    </>
   )
 }

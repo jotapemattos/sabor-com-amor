@@ -1,8 +1,7 @@
-import { inter, telma } from '../../fonts'
-
-import '../../../styles/globals.css'
+import { inter, telma } from '@/app/fontsComponent'
 import clsx from 'clsx'
 import { Toaster } from 'sonner'
+import '../../../styles/globals.css'
 
 export const metadata = {
   title: 'Sabor com Amor - Login',
