@@ -36,17 +36,17 @@ export function Form() {
     <>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="bg-zinc-50 flex flex-col items-start justify-between w-96 p-8 rounded-lg gap-8 border-zinc-200 border">
+        className="bg-zinc-50 flex flex-col items-start justify-between w-72 md:w-80 lg:w-96 p-8 rounded-lg gap-8 border-zinc-200 border">
         <span className="space-y-1">
-          <h1 className="font-medium text-2xl font-sans">Bem vinda de volta</h1>
-          <p className="text-neutral-500 text-md">Faça login para gerenciar sua loja.</p>
+          <h1 className="font-medium text-xl md:text-2xl font-sans">Bem vinda de volta</h1>
+          <p className="text-neutral-500 text-sm md:text-md">Faça login para gerenciar sua loja.</p>
         </span>
-        <span className="flex w-full flex-col items-start gap-2">
+        <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
           <label htmlFor="email">Email</label>
           <InputFocusBlur placeholder="seuemail@exemplo.com" {...register('email')} />
           {errors.email ? <p className="text-sm text-red-600">{errors.email.message}</p> : null}
         </span>
-        <span className="flex w-full flex-col items-start gap-2">
+        <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
           <label htmlFor="password">Senha</label>
           <div className="relative flex items-center w-full">
             <InputFocusBlur
@@ -73,7 +73,7 @@ export function Form() {
         <Button
           variant="default"
           size="sm"
-          className="text-md px-4 py-2 rounded-lg shadow w-full group bg-zinc-800 space-x-2"
+          className="text-sm md:text-md px-4 py-2 rounded-lg shadow w-full group bg-zinc-800 space-x-2"
           type="submit"
           disabled={isSubmitting}>
           {isSubmitting ? (
