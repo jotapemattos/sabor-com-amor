@@ -8,13 +8,5 @@ export default async function Admin() {
     data: { user }
   } = await supabase.auth.getUser()
 
-  if (!user) redirect('/login')
-  const handleLogout = () => {
-    console.log('po')
-  }
-  return (
-    <div>
-      <button formAction={handleLogout}>Logout</button>
-    </div>
-  )
+  return <div></div>
 }

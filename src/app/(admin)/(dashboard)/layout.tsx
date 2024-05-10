@@ -1,6 +1,7 @@
 import { inter, telma } from '../../fonts/index'
 
 import '../../../styles/globals.css'
+import { AdminNavbar } from '@/components/admin/navbarComponent'
 import clsx from 'clsx'
 
 export const metadata = {
@@ -14,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={clsx(inter.className, telma.variable, 'font-sans antialiased bg-amber-50')}>{children}</body>
+      <body className={clsx(inter.className, telma.variable, 'font-sans antialiased bg-zinc-100 ')}>
+        <AdminNavbar />
+        {children}
+      </body>
     </html>
   )
 }
