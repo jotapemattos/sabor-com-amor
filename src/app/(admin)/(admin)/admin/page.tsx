@@ -8,5 +8,5 @@ export default async function Admin() {
     data: { user }
   } = await supabase.auth.getUser()
 
-  return <div></div>
+  return <div>Admin</div>
 }
