@@ -21,5 +21,5 @@ export async function login({ email, password }: LoginProps) {
   if (error) {
     throw new Error('Ops! Ocorreu um erro. Por favor, tente novamente mais tarde.')
   }
-  return redirect('/dashboard')
+  return redirect('/admin/')
 }

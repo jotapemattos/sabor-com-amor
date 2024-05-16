@@ -13,7 +13,6 @@ interface NavItems {
   title: string
   icon: JSX.Element
   href: string
-  className?: string
   isComingSoon?: boolean
 }
 
@@ -28,7 +27,6 @@ export function AdminNavbar() {
       title: 'Dashboard',
       icon: <LayoutDashboard className="size-5" />,
       href: '/admin/',
-      className: '',
       isComingSoon: true
     },
     {
@@ -52,19 +50,21 @@ export function AdminNavbar() {
           width={500}
           height={500}
         />
-        <h1 className="font-serif text-xl text-center">Sabor com amor Admin</h1>
+        <h1 className="font-serif text-xl text-center">Sabor com Amor</h1>
       </div>
       <Separator className="bg-zinc-300" />
-      <nav className={cn('grid md:grid-rows-3 text-base items-start w-full gap-2')}>
+      <nav className="grid md:grid-rows-3 text-base items-start w-full gap-2">
         {items.map((item, idx) => {
           const { title, icon, href, isComingSoon } = item
 
           return (
             <Link
               key={idx}
-              href={`${href}`}
+              href={isComingSoon ? '#' : `${href}`}
               rel="noopener noreferrer"
-              className={cn('relative flex flex-col gap-3 px-2 py-[6px] w-full items-start')}
+              className={cn('relative flex flex-col gap-3 px-2 py-[6px] w-full items-start', {
+                'cursor-default': isComingSoon
+              })}
               onClick={() => setActiveIdx(idx)}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}>
@@ -85,13 +85,9 @@ export function AdminNavbar() {
                       {icon}
                       <p className="font-medium">{title}</p>
                     </div>
-                    <div className="group relative grid overflow-hidden rounded-full px-3 py-1 shadow-md transition-colors duration-200">
-                      <span>
-                        <span className="spark mask-gradient animate-flip before:animate-rotate absolute inset-0 h-[100%] w-[100%] overflow-hidden rounded-full [mask:linear-gradient(white,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:rotate-[-90deg] before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%]" />
-                      </span>
-                      <span className="backdrop absolute inset-px rounded-full bg-gradient-to-b from-zinc-400 to-zinc-300 transition-colors duration-200 group-hover:bg-neutral-900" />
-                      <span className="z-10 text-zinc-900 text-xs font-medium">Em breve</span>
-                    </div>
+                    <span className="text-xs border-[0.5px] border-zinc-400 bg-gradient-to-b from-zinc-200 relative drop-shadow-lg shadow-zinc-950 to-zinc-400 px-1 rounded-full font-medium">
+                      Em breve
+                    </span>
                   </>
                 ) : (
                   <div className="flex items-center gap-2">
