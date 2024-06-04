@@ -1,4 +1,6 @@
+import { getProducts } from '@/app/actions/get-productsComponent'
 import { CommandMenu } from '@/components/admin/command-dialogComponent'
+import { DropdownFilter } from '@/components/admin/dropdown-filterComponent'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,15 +10,11 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumbComponent'
 
-export async function generateMetadata() {
-  return {
-    title: 'Sabor com Amor - Produtos'
-  }
-}
-
-export default function Products() {
+export default async function Products() {
+  const data = await getProducts()
+  console.log(data)
   return (
-    <div className="flex flex-col pl-72 h-screen w-full items-start pr-12">
+    <div className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
       <header className="flex justify-between items-center sticky top-6 w-full">
         <Breadcrumb>
           <BreadcrumbList>
@@ -33,6 +31,11 @@ export default function Products() {
           <CommandMenu />
         </span>
       </header>
+      <section className="w-full flex flex-col gap-2 items-center justify-center">
+        <header className="w-full flex items-center justify-end">
+          <DropdownFilter />
+        </header>
+      </section>
     </div>
   )
 }
