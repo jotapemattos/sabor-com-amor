@@ -1,26 +1,26 @@
-import enroladinhoGoiabaPacote from '../assets/bolachinha-com-goiabada-pcte.svg';
-import enroladinhoGoiaba from '../assets/bolachinha-de-goiaba-vidro 1.svg';
-import brownie from '../assets/brownie.svg';
-import cookiesIntegral from '../assets/cookies-integral 1.svg';
-import cookies from '../assets/cookies.svg';
-import geleia from '../assets/geleia.svg';
-import paoAboboraCabotia from '../assets/pao-abobora-cabotia.svg';
-import baguete from '../assets/pao-baguete.svg';
-import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg';
-import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg';
-import paoCaseiro from '../assets/pao-caseiro-italiano 1.svg';
-import paoDeMilho from '../assets/pao-de-milho.svg';
-import paoDeForma from '../assets/pao-forma-caseiro 1.svg';
-import paoDeFormaSemiIntegral from '../assets/pao-forma-semi-integral 1.svg';
-import waffle from '../assets/waffle-2-discos 1.svg';
+import enroladinhoGoiabaPacote from '../assets/bolachinha-com-goiabada-pcte.svg'
+import enroladinhoGoiaba from '../assets/bolachinha-de-goiaba-vidro 1.svg'
+import brownie from '../assets/brownie.svg'
+import cookiesIntegral from '../assets/cookies-integral 1.svg'
+import cookies from '../assets/cookies.svg'
+import geleia from '../assets/geleia.svg'
+import paoAboboraCabotia from '../assets/pao-abobora-cabotia.svg'
+import baguete from '../assets/pao-baguete.svg'
+import paoCaseiroCalabresa from '../assets/pao-caseiro-com-calabresa 1.svg'
+import paoCaseiroMussarela from '../assets/pao-caseiro-com-mussarela 1.svg'
+import paoCaseiro from '../assets/pao-caseiro-italiano 1.svg'
+import paoCenouraVegano from '../assets/pao-cenoura-vegano.svg'
+import paoDeMilho from '../assets/pao-de-milho.svg'
+import paoMariaVegano from '../assets/pao-maria-vegano.svg'
+import waffle from '../assets/waffle-2-discos 1.svg'
 
 export type DataProps = {
-  name: string;
-  price: string;
-  image: string;
-  quantity: string;
-  description: string;
-};
+  name: string
+  price: string
+  image: string
+  quantity: string
+  description: string
+}
 
 export const data: DataProps[] = [
   {
@@ -45,16 +45,16 @@ export const data: DataProps[] = [
     description: ''
   },
   {
-    name: 'Pão de forma semi integral',
-    price: '15,00',
-    image: paoDeFormaSemiIntegral,
+    name: 'Pão de cenoura vegano',
+    price: '18,00',
+    image: paoCenouraVegano,
     quantity: '1Un.',
     description: ''
   },
   {
-    name: 'Pão de forma caseiro',
-    price: '14,00',
-    image: paoDeForma,
+    name: 'Pão Maria vegano',
+    price: '15,00',
+    image: paoMariaVegano,
     quantity: '1Un.',
     description: ''
   },
@@ -128,4 +128,4 @@ export const data: DataProps[] = [
     quantity: '200g',
     description: 'Sem trigo e sem açúcar'
   }
-];
+]
