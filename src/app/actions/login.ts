@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation'
 
-import { createClient } from '@/utils/supabase/serverComponent'
+import { createClient } from '@/supabase/serverComponent'
 
 interface LoginProps {
   email: string

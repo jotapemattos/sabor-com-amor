@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-import { createClient } from '@/utils/supabase/serverComponent'
+import { createClient } from '@/supabase/serverComponent'
 
 export default async function Admin() {
   const supabase = createClient()

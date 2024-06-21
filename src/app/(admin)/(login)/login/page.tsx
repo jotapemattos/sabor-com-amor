@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { Form } from '@/components/login/formComponent'
-import { createClient } from '@/utils/supabase/serverComponent'
+import { createClient } from '@/supabase/serverComponent'
 
 export default async function Login() {
   const supabase = createClient()

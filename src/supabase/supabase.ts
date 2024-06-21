@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Database } from './schema'
 
 import { createClient } from '@supabase/supabase-js'
