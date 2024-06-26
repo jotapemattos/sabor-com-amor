@@ -1,11 +1,5 @@
-import { Inter } from 'next/font/google'
-
 import '../../styles/globals.css'
-
-const inter = Inter({
-  weight: '400',
-  subsets: ['latin']
-})
+import { geist } from '../fonts'
 
 export const metadata = {
   title: 'Sabor com Amor',
@@ -14,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={inter.className}>
+    <html lang="pt-BR" className={geist.className}>
       <body className="bg-zinc-900" suppressHydrationWarning={true}>
         {children}
       </body>
