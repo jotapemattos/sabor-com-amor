@@ -81,7 +81,7 @@ export function AdminNavbar() {
               <div className="z-[2] flex items-center justify-center gap-6">
                 {isComingSoon ? (
                   <>
-                    <div className="blur-sm flex items-center gap-2">
+                    <div className="blur-sm text-sm flex items-center gap-2">
                       {icon}
                       <p className="font-medium">{title}</p>
                     </div>
@@ -92,7 +92,7 @@ export function AdminNavbar() {
                 ) : (
                   <div className="flex items-center gap-2">
                     {icon}
-                    <p className="font-medium">{title}</p>
+                    <p className="font-medium text-sm">{title}</p>
                   </div>
                 )}
               </div>

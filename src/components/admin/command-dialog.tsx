@@ -9,9 +9,14 @@ import {
   CommandItem,
   CommandList
 } from '@/components/ui/commandComponent'
+import { Product } from '@/supabase/entities-typesComponent'
 import { Search } from 'lucide-react'
 
-export function CommandMenu() {
+interface CommandMenuProps {
+  products: Product[]
+}
+
+export function CommandMenu({ products }: CommandMenuProps) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -41,7 +46,9 @@ export function CommandMenu() {
         <CommandList>
           <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
           <CommandGroup heading="Sugestões">
-            <CommandItem>Cookies</CommandItem>
+            {products.map((product) => (
+              <CommandItem key={product.id}>{product.name}</CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

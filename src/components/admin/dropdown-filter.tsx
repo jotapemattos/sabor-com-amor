@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger
 } from '../ui/dropdown-menu'
 
-import { ArrowDownWideNarrow } from 'lucide-react'
+import { Filter } from 'lucide-react'
 
 export function DropdownFilter() {
   const [ascending, setAscending] = useState(false)
@@ -20,7 +20,7 @@ export function DropdownFilter() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="h-8 gap-1 text-sm">
-            <ArrowDownWideNarrow className="size-4" />
+            <Filter size={16} />
             <span>Filtrar</span>
           </Button>
         </DropdownMenuTrigger>
