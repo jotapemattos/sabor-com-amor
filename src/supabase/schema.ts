@@ -12,6 +12,7 @@ export type Database = {
           name: string | null
           price: string | null
           quantity: string | null
+          status: Database['public']['Enums']['status'] | null
         }
         Insert: {
           created_at?: string
@@ -21,6 +22,7 @@ export type Database = {
           name?: string | null
           price?: string | null
           quantity?: string | null
+          status?: Database['public']['Enums']['status'] | null
         }
         Update: {
           created_at?: string
@@ -30,6 +32,7 @@ export type Database = {
           name?: string | null
           price?: string | null
           quantity?: string | null
+          status?: Database['public']['Enums']['status'] | null
         }
         Relationships: []
       }
@@ -41,7 +44,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      status: 'ativo' | 'arquivado'
     }
     CompositeTypes: {
       [_ in never]: never
