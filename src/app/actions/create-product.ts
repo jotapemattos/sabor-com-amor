@@ -1,5 +1,4 @@
 import { supabase } from '@/supabase/supabaseComponent'
-import { User } from '@supabase/supabase-js'
 
 interface CreateProductProps {
   name: string
@@ -7,13 +6,9 @@ interface CreateProductProps {
   price: string
   quantity: string
   productImage: File | null
-  user: User | null
 }
 
-export async function createProduct({ name, description, price, quantity, productImage, user }: CreateProductProps) {
-  if (!user) {
-    throw new Error('É necessário estar autenticado para executar essa ação.')
-  }
+export async function createProduct({ name, description, price, quantity, productImage }: CreateProductProps) {
   if (!productImage) {
     throw new Error('A imagem é necessária para criação do produto')
   }
@@ -34,12 +29,11 @@ export async function createProduct({ name, description, price, quantity, produc
   }
   const { data, error, status } = await supabase
     .from('products')
-    .insert([{ name, price, description, quantity, image }])
+    .insert([{ name, price, description, quantity, image, status: 'ativo' }])
     .select()
 
   if (error) {
     throw new Error('Não foi possível cadastrar o produto')
   }
-
   return { data, status, error: imageUpload.error }
 }
