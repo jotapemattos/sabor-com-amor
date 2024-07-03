@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '../ui/input'
 
 import { createProduct } from '@/app/actions/create-productComponent'
-import { AddNewProductSchema, addNewProductSchema } from '@/lib/schemaComponent'
+import { AddNewProductSchema, addNewProductSchema } from '@/lib/zod-schemaComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { PlusIcon } from 'lucide-react'
