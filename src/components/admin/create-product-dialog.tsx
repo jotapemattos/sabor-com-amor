@@ -10,31 +10,43 @@ import { Input } from '../ui/input'
 import { createProduct } from '@/app/actions/create-productComponent'
 import { AddNewProductSchema, addNewProductSchema } from '@/lib/schemaComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { User } from '@supabase/supabase-js'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { PlusIcon } from 'lucide-react'
 import { Check, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 
-interface CreateProductDialogProps {
-  user: User | null
-}
-
-export function CreateProductDialog({ user }: CreateProductDialogProps) {
+export function CreateProductDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [productImage, setProductImage] = useState<File | null>(null)
+  const queryClient = useQueryClient()
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
+    watch
   } = useForm<AddNewProductSchema>({
     resolver: zodResolver(addNewProductSchema)
+  })
+
+  const name = watch('name')
+  const description = watch('description')
+  const price = watch('price')
+  const quantity = watch('quantity')
+
+  const { mutateAsync: createProductFn } = useMutation({
+    mutationFn: createProduct,
+    onSuccess() {
+      queryClient.setQueryData(['products'], (data: AddNewProductSchema[]) => {
+        return [...data, { name, description, price, quantity, productImage, status: 'ativo' }]
+      })
+    }
   })
 
   const handleProductCreation = async ({ name, description, price, quantity }: AddNewProductSchema) => {
     if (!errors.root) {
       try {
-        const { error } = await createProduct({ name, description, price, quantity, productImage, user })
+        const { error } = await createProductFn({ name, description, price, quantity, productImage })
         if (!error) toast.success('Produto criado com sucesso')
       } catch (error) {
         if (error instanceof Error) {
@@ -45,7 +57,6 @@ export function CreateProductDialog({ user }: CreateProductDialogProps) {
       }
     }
   }
-
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -94,7 +105,7 @@ export function CreateProductDialog({ user }: CreateProductDialogProps) {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    <span className="text-zinc-950">Cadastrando produto</span>
+                    <span className="text-white">Cadastrando produto</span>
                   </>
                 ) : (
                   <>

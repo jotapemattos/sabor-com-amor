@@ -2,6 +2,7 @@ import { geist, telma } from '../../fonts/index'
 
 import '../../../styles/globals.css'
 import { AdminNavbar } from '@/components/admin/navbarComponent'
+import Providers from '@/components/providersComponent'
 import clsx from 'clsx'
 import { Toaster } from 'sonner'
 
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body className={clsx(geist.className, telma.variable, 'antialiased bg-zinc-100 ')}>
-        <Toaster position="top-center" richColors />
-        <AdminNavbar />
-        {children}
+        <Providers>
+          <Toaster position="top-center" richColors />
+          <AdminNavbar />
+          {children}
+        </Providers>
       </body>
     </html>
   )

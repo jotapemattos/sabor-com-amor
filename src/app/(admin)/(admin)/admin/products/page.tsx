@@ -1,6 +1,7 @@
-import { getProducts } from '@/app/actions/get-productsComponent'
+'use client'
 import { CreateProductDialog } from '@/components/admin/create-product-dialogComponent'
 import { DropdownFilter } from '@/components/admin/dropdown-filterComponent'
+import { Badge } from '@/components/ui/badgeComponent'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +12,7 @@ import {
 } from '@/components/ui/breadcrumbComponent'
 import { Button } from '@/components/ui/buttonComponent'
 import { Ellipsis } from '@/components/ui/ellipsisComponent'
+import { Input } from '@/components/ui/inputComponent'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popoverComponent'
 import {
   Table,
@@ -21,16 +23,15 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/tableComponent'
-import { createClient } from '@/supabase/serverComponent'
+import { getProducts } from '@/utils/get-productsComponent'
+import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 
-export default async function Products() {
-  const supabase = createClient()
-  const {
-    data: { user }
-  } = await supabase.auth.getUser()
-
-  const products = await getProducts()
+export default function Products() {
+  const { data: products } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts
+  })
 
   return (
     <div className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
@@ -48,9 +49,12 @@ export default async function Products() {
         </Breadcrumb>
       </header>
       <section className="w-full flex flex-col gap-10 items-center justify-center">
-        <header className="w-full flex items-center justify-end gap-4">
-          <CreateProductDialog user={user} />
-          <DropdownFilter />
+        <header className="w-full flex items-center justify-between gap-4">
+          <Input className="self-start h-8 w-96" placeholder="Pesquisar por produto..." />
+          <span className="flex items-center gap-4">
+            <CreateProductDialog />
+            <DropdownFilter />
+          </span>
         </header>
         <Table>
           <TableCaption>Lista de todos os produtos cadastrados</TableCaption>
@@ -63,26 +67,21 @@ export default async function Products() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product) => (
+            {products?.map((product) => (
               <TableRow key={product.id}>
-                <TableCell className="font-medium">Pao de abobora vegano</TableCell>
+                <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>R$ {product.price}</TableCell>
-                <TableCell className="flex items-center gap-2 ">
-                  <span
+                <TableCell>
+                  <Badge
                     className={clsx(
-                      'absolute size-2 animate-ping rounded-full',
-                      product.status === 'ativo' && 'bg-blue-700',
-                      product.status === 'arquivado' && 'bg-yellow-600'
-                    )}
-                  />
-                  <span
-                    className={clsx(
-                      'size-2 rounded-full',
-                      product.status === 'ativo' && 'bg-blue-700',
-                      product.status === 'arquivado' && 'bg-yellow-400'
-                    )}
-                  />
-                  <p>{product.status}</p>
+                      '',
+                      product.status === 'ativo' &&
+                        'bg-green-200 border border-green-500 text-green-900 hover:bg-green-300 hover:text-green-950',
+                      product.status === 'arquivado' &&
+                        'bg-yellow-200 border border-yellow-500 text-yellow-900 hover:bg-yellow-300 hover:text-yellow-950'
+                    )}>
+                    {product.status}
+                  </Badge>
                 </TableCell>
                 <TableCell className="text-right">
                   <Popover>
