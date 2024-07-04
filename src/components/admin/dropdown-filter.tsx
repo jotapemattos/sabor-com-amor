@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '../ui/button'
 import {
@@ -14,7 +14,19 @@ import {
 import { Filter } from 'lucide-react'
 
 export function DropdownFilter() {
-  const [ascending, setAscending] = useState(false)
+  const router = useRouter()
+  const params = useSearchParams()
+  const status = params.get('status')
+
+  const setFilter = (status: string) => {
+    if (status) {
+      router.push('?status=' + status)
+    }
+    if (!status) {
+      router.push('/admin/products')
+    }
+  }
+
   return (
     <>
       <DropdownMenu>
@@ -27,11 +39,14 @@ export function DropdownFilter() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Filtrar por</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem checked={ascending} onSelect={() => setAscending(true)}>
-            Arquivado
+          <DropdownMenuCheckboxItem checked={status === ''} onSelect={() => setFilter('')}>
+            Todos
           </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem checked={!ascending} onSelect={() => setAscending(false)}>
-            Ativados
+          <DropdownMenuCheckboxItem checked={status === 'arquivado'} onSelect={() => setFilter('arquivado')}>
+            Arquivados
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem checked={status === 'ativo'} onSelect={() => setFilter('ativo')}>
+            Ativos
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>

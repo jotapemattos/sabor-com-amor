@@ -1,4 +1,8 @@
 'use client'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
+
 import { CreateProductDialog } from '@/components/admin/create-product-dialogComponent'
 import { DropdownFilter } from '@/components/admin/dropdown-filterComponent'
 import { Badge } from '@/components/ui/badgeComponent'
@@ -28,10 +32,20 @@ import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 
 export default function Products() {
+  const params = useSearchParams()
+  const productStatus = params.get('status')
+
   const { data: products } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts
   })
+
+  const filteredProducts = useMemo(() => {
+    if (productStatus && products) {
+      return products.filter((product) => product.status === productStatus)
+    }
+    return products
+  }, [products, productStatus])
 
   return (
     <div className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
@@ -67,7 +81,7 @@ export default function Products() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products?.map((product) => (
+            {filteredProducts?.map((product) => (
               <TableRow key={product.id}>
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>R$ {product.price}</TableCell>
@@ -89,8 +103,8 @@ export default function Products() {
                       <Ellipsis />
                     </PopoverTrigger>
                     <PopoverContent align="end" className="flex flex-col gap-2 max-w-fit p-2">
-                      <Button size="sm" className="h-6 text-xs rounded-md p-2" variant="outline">
-                        Editar
+                      <Button asChild size="sm" className="h-6 text-xs rounded-md p-2" variant="outline">
+                        <Link href={`/admin/products/${product.id}`}>Editar</Link>
                       </Button>
                       <Button
                         size="sm"
