@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 
 import { CreateProductDialog } from '@/components/admin/create-product-dialogComponent'
+import { DeleteProductAlertDialog } from '@/components/admin/delete-product-alert-dialogComponent'
 import { DropdownFilter } from '@/components/admin/dropdown-filterComponent'
 import { Badge } from '@/components/ui/badgeComponent'
 import {
@@ -106,12 +107,7 @@ export default function Products() {
                       <Button asChild size="sm" className="h-6 text-xs rounded-md p-2" variant="outline">
                         <Link href={`/admin/products/${product.id}`}>Editar</Link>
                       </Button>
-                      <Button
-                        size="sm"
-                        className="h-6 text-xs rounded-md p-2 border border-red-800 bg-red-300 text-red-800 hover:bg-red-400 hover:text-red-900"
-                        variant="outline">
-                        Deletar
-                      </Button>
+                      <DeleteProductAlertDialog productId={product.id} />
                     </PopoverContent>
                   </Popover>
                 </TableCell>
