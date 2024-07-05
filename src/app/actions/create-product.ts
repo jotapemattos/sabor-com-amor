@@ -29,7 +29,7 @@ export async function createProduct({ name, description, price, quantity, produc
   }
   const { data, error, status } = await supabase
     .from('products')
-    .insert([{ name, price, description, quantity, image, status: 'ativo' }])
+    .insert([{ name, price, description, quantity, image, status: 'disponível' }])
     .select()
 
   if (error) {
