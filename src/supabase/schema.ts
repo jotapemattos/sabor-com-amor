@@ -44,7 +44,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      status: 'ativo' | 'arquivado'
+      status: 'disponível' | 'arquivado'
     }
     CompositeTypes: {
       [_ in never]: never

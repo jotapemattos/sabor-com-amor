@@ -45,8 +45,8 @@ export function DropdownFilter() {
           <DropdownMenuCheckboxItem checked={status === 'arquivado'} onSelect={() => setFilter('arquivado')}>
             Arquivados
           </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem checked={status === 'ativo'} onSelect={() => setFilter('ativo')}>
-            Ativos
+          <DropdownMenuCheckboxItem checked={status === 'disponível'} onSelect={() => setFilter('disponível')}>
+            Disponíveis
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>

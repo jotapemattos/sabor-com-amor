@@ -90,7 +90,7 @@ export default function Products() {
                   <Badge
                     className={clsx(
                       '',
-                      product.status === 'ativo' &&
+                      product.status === 'disponível' &&
                         'bg-green-200 border border-green-500 text-green-900 hover:bg-green-300 hover:text-green-950',
                       product.status === 'arquivado' &&
                         'bg-yellow-200 border border-yellow-500 text-yellow-900 hover:bg-yellow-300 hover:text-yellow-950'

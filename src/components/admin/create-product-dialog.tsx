@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '../ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 import { Input } from '../ui/input'
+import { Textarea } from '../ui/textarea'
 
 import { createProduct } from '@/app/actions/create-productComponent'
 import { AddNewProductSchema, addNewProductSchema } from '@/lib/zod-schemaComponent'
@@ -38,7 +39,7 @@ export function CreateProductDialog() {
     mutationFn: createProduct,
     onSuccess() {
       queryClient.setQueryData(['products'], (data: AddNewProductSchema[]) => {
-        return [...data, { name, description, price, quantity, productImage, status: 'ativo' }]
+        return [...data, { name, description, price, quantity, productImage, status: 'disponível' }]
       })
     }
   })
@@ -80,7 +81,7 @@ export function CreateProductDialog() {
             </span>
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
               <label htmlFor="description">Descrição do produto</label>
-              <Input placeholder="Informe os ingredientes..." {...register('description')} />
+              <Textarea className="resize-none" placeholder="Informe os ingredientes..." {...register('description')} />
               {errors.description ? <p className="text-sm text-red-600">{errors.description.message}</p> : null}
             </span>
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
