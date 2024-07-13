@@ -8,8 +8,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 
-import { createProduct } from '@/app/actions/create-productComponent'
 import { AddNewProductSchema, addNewProductSchema } from '@/lib/zod-schemaComponent'
+import { createProduct } from '@/utils/create-productComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { PlusIcon } from 'lucide-react'

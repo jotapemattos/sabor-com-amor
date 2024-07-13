@@ -17,3 +17,12 @@ export const addNewProductSchema = z.object({
 })
 
 export type AddNewProductSchema = z.infer<typeof addNewProductSchema>
+
+export const editProductSchema = z.object({
+  name: z.string().nullable().or(z.literal('')),
+  price: z.string().nullable().or(z.literal('')),
+  description: z.string().nullable().or(z.literal('')),
+  quantity: z.string().nullable().or(z.literal(''))
+})
+
+export type EditProductSchema = z.infer<typeof editProductSchema>

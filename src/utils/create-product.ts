@@ -14,19 +14,24 @@ export async function createProduct({ name, description, price, quantity, produc
   }
 
   const fileExtension = productImage.name.split('.').pop()
-  const filePath = `${Math.random()}.${fileExtension}`
+  const filePath = `${name}-image.${fileExtension}`
 
   const imageUpload = await supabase.storage.from('products').upload(filePath, productImage, {
     cacheControl: '3600',
     upsert: false
   })
 
-  const image = imageUpload.data?.path
-
   if (imageUpload.error) {
     console.log(imageUpload.error)
     throw new Error('Não foi possível cadastrar o produto')
   }
+
+  const {
+    data: { publicUrl }
+  } = supabase.storage.from('products').getPublicUrl(imageUpload.data.path)
+
+  const image = publicUrl
+
   const { data, error, status } = await supabase
     .from('products')
     .insert([{ name, price, description, quantity, image, status: 'disponível' }])
