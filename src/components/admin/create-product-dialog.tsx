@@ -41,6 +41,7 @@ export function CreateProductDialog() {
       queryClient.setQueryData(['products'], (data: AddNewProductSchema[]) => {
         return [...data, { name, description, price, quantity, productImage, status: 'disponível' }]
       })
+      queryClient.invalidateQueries({ queryKey: ['products'] })
     }
   })
 

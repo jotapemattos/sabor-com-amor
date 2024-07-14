@@ -29,13 +29,11 @@ export function DeleteProductAlertDialog({ productId }: DeleteProductAlertDialog
     mutationFn: deleteProductById,
     onSuccess: () => {
       toast.success('Produto removido com sucesso.')
+      queryClient.invalidateQueries({ queryKey: ['products'] })
     },
     onError: (error) => {
       console.log(error)
       toast.error('Não foi possível deletar o produto. Tente novamente em breve')
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['products'] })
     }
   })
 
