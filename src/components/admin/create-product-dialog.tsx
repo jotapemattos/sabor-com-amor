@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import { Button as AriaButton } from 'react-aria-components'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '../ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
+import { FileTrigger } from '../ui/file-trigger'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 
@@ -12,7 +14,7 @@ import { AddNewProductSchema, addNewProductSchema } from '@/lib/zod-schemaCompon
 import { createProduct } from '@/utils/create-productComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { PlusIcon } from 'lucide-react'
+import { PlusIcon, Upload } from 'lucide-react'
 import { Check, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 
@@ -77,29 +79,64 @@ export function CreateProductDialog() {
           <form onSubmit={handleSubmit(handleProductCreation)} className="space-y-4">
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
               <label htmlFor="name">Nome do produto</label>
-              <Input placeholder="Escreva o nome do produto..." {...register('name')} />
+              <Input
+                placeholder="Escreva o nome do produto..."
+                {...register('name')}
+                className="bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
+              />
               {errors.name ? <p className="text-sm text-red-600">{errors.name.message}</p> : null}
             </span>
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
               <label htmlFor="description">Descrição do produto</label>
-              <Textarea className="resize-none" placeholder="Informe os ingredientes..." {...register('description')} />
+              <Textarea
+                className="resize-none bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
+                placeholder="Informe os ingredientes..."
+                {...register('description')}
+              />
               {errors.description ? <p className="text-sm text-red-600">{errors.description.message}</p> : null}
             </span>
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
               <label htmlFor="price">Preço do produto</label>
-              <Input placeholder="20,00" {...register('price')} />
+              <Input
+                className="bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
+                placeholder="20,00"
+                {...register('price')}
+              />
               {errors.price ? <p className="text-sm text-red-600">{errors.price.message}</p> : null}
             </span>
             <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
               <label htmlFor="quantity">Quantidade (200g, 1un, 2 discos, etc.)</label>
-              <Input placeholder="1 unidade" {...register('quantity')} />
+              <Input
+                className="bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
+                placeholder="1 unidade"
+                {...register('quantity')}
+              />
               {errors.quantity ? <p className="text-sm text-red-600">{errors.quantity.message}</p> : null}
             </span>
             <span className="flex w-full flex-col items-start gap-1 text-sm md:text-base">
               <label className="">Imagem do produto</label>
-              <Input type="file" onChange={(e) => setProductImage(e.target.files ? e.target.files[0] : null)} />
+              <FileTrigger
+                onSelect={(e) => {
+                  if (e) {
+                    const files = Array.from(e)
+                    setProductImage(files[0])
+                  }
+                }}
+                allowsMultiple>
+                <AriaButton
+                  className="bg-zinc-900 text-zinc-200 rounded-md p-2 text-sm flex items-center gap-2 h-8 hover:bg-zinc-950 transition-colors duration-200"
+                  type="button">
+                  <Upload size={16} /> Selecionar imagem
+                </AriaButton>
+              </FileTrigger>
             </span>
-            <span className="flex w-full items-center justify-between">
+            <span className="flex w-full gap-4 items-center justify-between">
+              <Button
+                className="w-full h-8 bg-zinc-200 text-brand-950 border-zinc-500 border hover:bg-zinc-300"
+                onClick={() => setIsOpen(false)}
+                type="button">
+                Cancelar
+              </Button>
               <Button
                 type="submit"
                 disabled={isSubmitting}

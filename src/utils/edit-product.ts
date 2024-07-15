@@ -6,7 +6,6 @@ interface EditProductByIdRequest {
   description: string | null
   price: string | null
   quantity: string | null
-  image: string
   status: 'arquivado' | 'disponível' | null
 }
 
@@ -16,12 +15,11 @@ export async function editProductById({
   description,
   price,
   quantity,
-  image,
   status
 }: EditProductByIdRequest) {
   const { data, error } = await supabase
     .from('products')
-    .update({ name, description, price, quantity, image, status })
+    .update({ name, description, price, quantity, status })
     .eq('id', productId)
     .select()
 
