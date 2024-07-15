@@ -17,8 +17,8 @@ import {
 import { Button } from '@/components/ui/buttonComponent'
 import { FileTrigger } from '@/components/ui/file-triggerComponent'
 import { Input } from '@/components/ui/inputComponent'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-groupComponent'
 import { Separator } from '@/components/ui/separatorComponent'
-import { Switch } from '@/components/ui/switchComponent'
 import { Textarea } from '@/components/ui/textareaComponent'
 import { EditProductSchema, editProductSchema } from '@/lib/zod-schemaComponent'
 import { Product } from '@/supabase/entities-typesComponent'
@@ -26,7 +26,7 @@ import { editProductById } from '@/utils/edit-productComponent'
 import { getProductsById } from '@/utils/get-product-by-idComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Check, PenTool, PackageOpen, Upload } from 'lucide-react'
+import { Loader2, Check, PenTool, PackageOpen, Upload, Eye } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface PageProps {
@@ -118,7 +118,7 @@ export default function Page({ params: { productId } }: PageProps) {
           <>
             <div className="w-full flex flex-col items-center justify-center gap-6">
               <h1 className="text-2xl flex items-center text-start w-96 gap-2">
-                <PackageOpen size={24} /> Visualização
+                <Eye size={24} /> Visualização
               </h1>
               <AdminProductCard product={product} />
             </div>
@@ -185,22 +185,25 @@ export default function Page({ params: { productId } }: PageProps) {
                 </span>
                 <span className="flex w-full flex-col items-start gap-1 text-sm md:text-base">
                   <label>Status</label>
-                  <div className="flex items-center gap-2 justify-between">
-                    <ProductStatusBadge productStatus="arquivado" />
-                    <Switch
-                      checked={productStatus === 'disponível'}
-                      onCheckedChange={() =>
-                        setProductStatus(productStatus === 'disponível' ? 'arquivado' : 'disponível')
-                      }
-                    />
-                    <ProductStatusBadge productStatus="disponível" />
-                  </div>
+                  <RadioGroup
+                    defaultValue={product.status ?? ''}
+                    onValueChange={(value) => setProductStatus(value as ProductStatus)}
+                    className="flex items-center gap-4 w-full">
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="arquivado" />
+                      <ProductStatusBadge productStatus="arquivado" />
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="disponível" />
+                      <ProductStatusBadge productStatus="disponível" />
+                    </div>
+                  </RadioGroup>
                 </span>
                 <span className="flex w-full items-center justify-between">
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-brand-900 hover:bg-brand-950 rounded-lg items-center justify-center flex gap-2 w-full">
+                    className="bg-brand-900 hover:bg-brand-950 rounded-md items-center justify-center flex gap-2 w-full">
                     {isSubmitting ? (
                       <>
                         <Loader2 className="h-4 w-4 animate-spin" />
