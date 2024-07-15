@@ -1,10 +1,9 @@
 import Image from 'next/image'
 
-import { Badge } from '../ui/badge'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card'
+import { ProductStatusBadge } from './product-status-badge'
 
 import { Product } from '@/supabase/entities-typesComponent'
-import clsx from 'clsx'
 
 interface AdminProductCardProps {
   product: Product
@@ -25,16 +24,7 @@ export function AdminProductCard({ product }: AdminProductCardProps) {
         <span className="text-xs font-medium">Ingredientes: {product.description}</span>
       </CardContent>
       <CardFooter>
-        <Badge
-          className={clsx(
-            '',
-            product.status === 'disponível' &&
-              'bg-green-200 border border-green-500 text-green-900 hover:bg-green-300 hover:text-green-950',
-            product.status === 'arquivado' &&
-              'bg-yellow-200 border border-yellow-500 text-yellow-900 hover:bg-yellow-300 hover:text-yellow-950'
-          )}>
-          {product.status}
-        </Badge>
+        <ProductStatusBadge productStatus={product.status} />
       </CardFooter>
     </Card>
   )

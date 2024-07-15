@@ -6,7 +6,7 @@ import { useMemo } from 'react'
 import { CreateProductDialog } from '@/components/admin/create-product-dialogComponent'
 import { DeleteProductAlertDialog } from '@/components/admin/delete-product-alert-dialogComponent'
 import { DropdownFilter } from '@/components/admin/dropdown-filterComponent'
-import { Badge } from '@/components/ui/badgeComponent'
+import { ProductStatusBadge } from '@/components/admin/product-status-badgeComponent'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -87,16 +87,7 @@ export default function Products() {
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>R$ {product.price}</TableCell>
                 <TableCell>
-                  <Badge
-                    className={clsx(
-                      '',
-                      product.status === 'disponível' &&
-                        'bg-green-200 border border-green-500 text-green-900 hover:bg-green-300 hover:text-green-950',
-                      product.status === 'arquivado' &&
-                        'bg-yellow-200 border border-yellow-500 text-yellow-900 hover:bg-yellow-300 hover:text-yellow-950'
-                    )}>
-                    {product.status}
-                  </Badge>
+                  <ProductStatusBadge productStatus={product.status} />
                 </TableCell>
                 <TableCell className="text-right">
                   <Popover>

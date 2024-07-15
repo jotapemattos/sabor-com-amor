@@ -1,9 +1,11 @@
 'use client'
 
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Button as AriaButton } from 'react-aria-components'
 import { useForm } from 'react-hook-form'
 
 import { AdminProductCard } from '@/components/admin/admin-product-cardComponent'
+import { ProductStatusBadge } from '@/components/admin/product-status-badgeComponent'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,18 +15,18 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumbComponent'
 import { Button } from '@/components/ui/buttonComponent'
+import { FileTrigger } from '@/components/ui/file-triggerComponent'
 import { Input } from '@/components/ui/inputComponent'
 import { Separator } from '@/components/ui/separatorComponent'
 import { Switch } from '@/components/ui/switchComponent'
 import { Textarea } from '@/components/ui/textareaComponent'
 import { EditProductSchema, editProductSchema } from '@/lib/zod-schemaComponent'
 import { Product } from '@/supabase/entities-typesComponent'
-import { supabase } from '@/supabase/supabaseComponent'
 import { editProductById } from '@/utils/edit-productComponent'
 import { getProductsById } from '@/utils/get-product-by-idComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Check, PenTool, PackageOpen } from 'lucide-react'
+import { Loader2, Check, PenTool, PackageOpen, Upload } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface PageProps {
@@ -39,6 +41,7 @@ export default function Page({ params: { productId } }: PageProps) {
     queryFn: () => getProductsById({ productId: Number(productId) })
   })
   const [productStatus, setProductStatus] = useState<ProductStatus | null>(null)
+  const [productImageFile, setProductImageFile] = useState<File | null>(null)
   const [productImageUrl, setProductImageUrl] = useState<string>('')
   const queryClient = useQueryClient()
 
@@ -66,7 +69,7 @@ export default function Page({ params: { productId } }: PageProps) {
     mutationFn: editProductById,
     onSuccess() {
       queryClient.setQueryData(['productById', productId], (data: Product) => {
-        return { ...data, name, description, price, quantity, image: productImageUrl, status: productStatus }
+        return { ...data, name, description, price, quantity, status: productStatus }
       })
     }
   })
@@ -80,7 +83,6 @@ export default function Page({ params: { productId } }: PageProps) {
           description,
           price,
           quantity,
-          image: productImageUrl,
           status: productStatus
         })
         if (!error) toast.success('Produto editado com sucesso')
@@ -90,31 +92,6 @@ export default function Page({ params: { productId } }: PageProps) {
         }
       }
     }
-  }
-
-  const handleImageUpdate = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files || event.target.files.length === 0) {
-      throw new Error('Você deve selecionar uma imagem para prosseguir')
-    }
-    const file = event.target.files[0]
-    const fileExt = file.name.split('.').pop()
-    const filePath = `${product?.name}-image.${fileExt}`
-
-    const { data, error: uploadError } = await supabase.storage.from('products').upload(filePath, file, {
-      cacheControl: '3600',
-      upsert: true
-    })
-
-    if (uploadError) {
-      console.log(uploadError)
-      return
-    }
-
-    const {
-      data: { publicUrl }
-    } = supabase.storage.from('products').getPublicUrl(data.path)
-
-    setProductImageUrl(publicUrl)
   }
 
   return (
@@ -150,7 +127,7 @@ export default function Page({ params: { productId } }: PageProps) {
               <h1 className="text-2xl flex items-center gap-2 w-96 text-start">
                 <PenTool size={24} /> Editar Produto
               </h1>
-              <form onSubmit={handleSubmit(handleProductUpdate)} className="w-96 space-y-4">
+              <form onSubmit={handleSubmit(handleProductUpdate)} className="w-96 space-y-6">
                 <div className="flex w-full items-center gap-2">
                   <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
                     <label htmlFor="name">Nome do produto</label>
@@ -191,16 +168,34 @@ export default function Page({ params: { productId } }: PageProps) {
                 </span>
                 <span className="flex w-full flex-col items-start gap-1 text-sm md:text-base">
                   <label className="">Imagem do produto</label>
-                  <Input
-                    className="bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
-                    type="file"
-                    onChange={handleImageUpdate}
-                  />
+                  <FileTrigger
+                    onSelect={(e) => {
+                      if (e) {
+                        const files = Array.from(e)
+                        setProductImageFile(files[0])
+                      }
+                    }}
+                    allowsMultiple>
+                    <AriaButton
+                      className="bg-zinc-100/20 text-zinc-900 border border-zinc-300 shadow-md rounded-md p-2 text-sm flex items-center gap-2 h-8 hover:bg-zinc-100 transition-colors duration-200"
+                      type="button">
+                      <Upload size={16} /> Selecionar imagem
+                    </AriaButton>
+                  </FileTrigger>
                 </span>
-                <Switch
-                  checked={productStatus === 'disponível'}
-                  onCheckedChange={() => setProductStatus(productStatus === 'disponível' ? 'arquivado' : 'disponível')}
-                />
+                <span className="flex w-full flex-col items-start gap-1 text-sm md:text-base">
+                  <label>Status</label>
+                  <div className="flex items-center gap-2 justify-between">
+                    <ProductStatusBadge productStatus="arquivado" />
+                    <Switch
+                      checked={productStatus === 'disponível'}
+                      onCheckedChange={() =>
+                        setProductStatus(productStatus === 'disponível' ? 'arquivado' : 'disponível')
+                      }
+                    />
+                    <ProductStatusBadge productStatus="disponível" />
+                  </div>
+                </span>
                 <span className="flex w-full items-center justify-between">
                   <Button
                     type="submit"
