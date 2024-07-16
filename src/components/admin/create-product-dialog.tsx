@@ -124,7 +124,7 @@ export function CreateProductDialog() {
                 }}
                 allowsMultiple>
                 <AriaButton
-                  className="bg-zinc-900 text-zinc-200 rounded-md p-2 text-sm flex items-center gap-2 h-8 hover:bg-zinc-950 transition-colors duration-200"
+                  className="bg-zinc-100/20 text-zinc-900 border border-zinc-300 shadow-md rounded-md p-2 text-sm flex items-center gap-2 h-8 hover:bg-zinc-100 transition-colors duration-200"
                   type="button">
                   <Upload size={16} /> Selecionar imagem
                 </AriaButton>
@@ -132,7 +132,7 @@ export function CreateProductDialog() {
             </span>
             <span className="flex w-full gap-4 items-center justify-between">
               <Button
-                className="w-full h-8 bg-zinc-200 text-brand-950 border-zinc-500 border hover:bg-zinc-300"
+                className="w-full h-8 bg-zinc-200 text-zinc-900 border-zinc-300 border hover:bg-zinc-300"
                 onClick={() => setIsOpen(false)}
                 type="button">
                 Cancelar

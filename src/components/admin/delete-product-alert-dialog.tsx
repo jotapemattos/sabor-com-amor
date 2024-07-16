@@ -15,7 +15,7 @@ import { Button } from '../ui/button'
 
 import { deleteProductById } from '@/utils/delete-product-by-idComponent'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Trash } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface DeleteProductAlertDialogProps {
@@ -59,10 +59,10 @@ export function DeleteProductAlertDialog({ productId }: DeleteProductAlertDialog
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel className="h-8">Cancelar</AlertDialogCancel>
           <AlertDialogAction asChild>
             <Button
-              className="bg-red-500/10 text-red-500 hover:bg-red-500/20"
+              className="bg-red-500/10 text-red-500 hover:bg-red-500/20 h-8 border border-red-300"
               onClick={handleDelete}
               disabled={isPending}>
               {isPending ? (
@@ -71,7 +71,9 @@ export function DeleteProductAlertDialog({ productId }: DeleteProductAlertDialog
                   <span>Excluindo...</span>
                 </>
               ) : (
-                <span>Excluir</span>
+                <span className="flex items-center gap-2">
+                  <Trash size={16} /> Excluir
+                </span>
               )}
             </Button>
           </AlertDialogAction>
