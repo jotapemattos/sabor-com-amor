@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { CreateProductDialog } from '@/components/admin/create-product-dialogComponent'
 import { DeleteProductAlertDialog } from '@/components/admin/delete-product-alert-dialogComponent'
@@ -30,7 +30,6 @@ import {
 } from '@/components/ui/tableComponent'
 import { getProducts } from '@/utils/get-productsComponent'
 import { useQuery } from '@tanstack/react-query'
-import clsx from 'clsx'
 
 export default function Products() {
   const params = useSearchParams()
@@ -47,6 +46,28 @@ export default function Products() {
     }
     return products
   }, [products, productStatus])
+
+  const [shownProducts, setShownProducts] = useState(filteredProducts)
+  const [searchInput, setSearchInput] = useState('')
+
+  useEffect(() => {
+    let products = filteredProducts
+    if (searchInput !== '' && products) {
+      products = products.filter((product) => {
+        if (!product.name) return
+        const productName = product.name
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+        const inputText = searchInput
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+        return productName.includes(inputText)
+      })
+    }
+    setShownProducts(products)
+  }, [filteredProducts, searchInput])
 
   return (
     <div className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
@@ -65,7 +86,12 @@ export default function Products() {
       </header>
       <section className="w-full flex flex-col gap-10 items-center justify-center">
         <header className="w-full flex items-center justify-between gap-4">
-          <Input className="self-start h-8 w-96" placeholder="Pesquisar por produto..." />
+          <Input
+            className="self-start h-8 w-96"
+            placeholder="Pesquisar por produto..."
+            value={searchInput}
+            onChange={(event) => setSearchInput(event.target.value)}
+          />
           <span className="flex items-center gap-4">
             <CreateProductDialog />
             <DropdownFilter />
@@ -82,7 +108,7 @@ export default function Products() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredProducts?.map((product) => (
+            {shownProducts?.map((product) => (
               <TableRow key={product.id}>
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>R$ {product.price}</TableCell>
