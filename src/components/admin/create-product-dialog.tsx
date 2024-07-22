@@ -10,8 +10,9 @@ import { FileTrigger } from '../ui/file-trigger'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 
+import { createProduct } from '@/app/actions/create-productComponent'
 import { AddNewProductSchema, addNewProductSchema } from '@/lib/zod-schemaComponent'
-import { createProduct } from '@/utils/create-productComponent'
+import { createClient } from '@/supabase/clientComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { PlusIcon, Upload } from 'lucide-react'
@@ -21,6 +22,7 @@ import { toast } from 'sonner'
 export function CreateProductDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [productImage, setProductImage] = useState<File | null>(null)
+  const supabase = createClient()
   const queryClient = useQueryClient()
 
   const {
@@ -41,7 +43,7 @@ export function CreateProductDialog() {
     mutationFn: createProduct,
     onSuccess() {
       queryClient.setQueryData(['products'], (data: AddNewProductSchema[]) => {
-        return [...data, { name, description, price, quantity, productImage, status: 'disponível' }]
+        return [...data, { name, description, price, quantity, status: 'disponível' }]
       })
       queryClient.invalidateQueries({ queryKey: ['products'] })
     }
@@ -50,7 +52,8 @@ export function CreateProductDialog() {
   const handleProductCreation = async ({ name, description, price, quantity }: AddNewProductSchema) => {
     if (!errors.root) {
       try {
-        const { error } = await createProductFn({ name, description, price, quantity, productImage })
+        const data = await uploadProductImage()
+        const { error } = await createProductFn({ name, description, price, image: data?.image, quantity })
         if (!error) toast.success('Produto criado com sucesso')
       } catch (error) {
         if (error instanceof Error) {
@@ -61,6 +64,28 @@ export function CreateProductDialog() {
       }
     }
   }
+
+  const uploadProductImage = async () => {
+    if (!productImage) return
+
+    const fileExtension = productImage.name.split('.').pop()
+    const filePath = `${Math.random()}-image.${fileExtension}`
+
+    const imageUpload = await supabase.storage.from('products').upload(filePath, productImage)
+
+    if (imageUpload.error) {
+      console.log(imageUpload.error)
+      throw new Error('Não foi possível cadastrar o produto')
+    }
+
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from('products').getPublicUrl(imageUpload.data.path)
+    const image = publicUrl
+
+    return { image }
+  }
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>

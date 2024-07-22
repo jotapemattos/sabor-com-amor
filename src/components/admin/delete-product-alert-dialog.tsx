@@ -13,7 +13,7 @@ import {
 } from '../ui/alert-dialog'
 import { Button } from '../ui/button'
 
-import { deleteProductById } from '@/utils/delete-product-by-idComponent'
+import { deleteProductById } from '@/app/actions/delete-product-by-idComponent'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Loader2, Trash } from 'lucide-react'
 import { toast } from 'sonner'
@@ -33,7 +33,7 @@ export function DeleteProductAlertDialog({ productId }: DeleteProductAlertDialog
     },
     onError: (error) => {
       console.log(error)
-      toast.error('Não foi possível deletar o produto. Tente novamente em breve')
+      toast.error(error.message)
     }
   })
 

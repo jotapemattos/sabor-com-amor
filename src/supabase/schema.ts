@@ -5,7 +5,7 @@ export type Database = {
     Tables: {
       products: {
         Row: {
-          created_at: string
+          created_at: string | null
           description: string | null
           id: number
           image: string | null
@@ -15,7 +15,7 @@ export type Database = {
           status: Database['public']['Enums']['status'] | null
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           description?: string | null
           id?: number
           image?: string | null
@@ -25,7 +25,7 @@ export type Database = {
           status?: Database['public']['Enums']['status'] | null
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           description?: string | null
           id?: number
           image?: string | null

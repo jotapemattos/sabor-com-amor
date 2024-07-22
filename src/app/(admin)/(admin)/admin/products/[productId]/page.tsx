@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Button as AriaButton } from 'react-aria-components'
 import { useForm } from 'react-hook-form'
 
+import { editProductById } from '@/app/actions/edit-productComponent'
 import { AdminProductCard } from '@/components/admin/admin-product-cardComponent'
 import { ProductStatusBadge } from '@/components/admin/product-status-badgeComponent'
 import {
@@ -21,12 +22,12 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-groupComponent
 import { Separator } from '@/components/ui/separatorComponent'
 import { Textarea } from '@/components/ui/textareaComponent'
 import { EditProductSchema, editProductSchema } from '@/lib/zod-schemaComponent'
+import { createClient } from '@/supabase/clientComponent'
 import { Product } from '@/supabase/entities-typesComponent'
-import { editProductById } from '@/utils/edit-productComponent'
 import { getProductsById } from '@/utils/get-product-by-idComponent'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Check, PenTool, PackageOpen, Upload, Eye } from 'lucide-react'
+import { Loader2, Check, PenTool, Upload, Eye } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface PageProps {
@@ -42,12 +43,14 @@ export default function Page({ params: { productId } }: PageProps) {
   })
   const [productStatus, setProductStatus] = useState<ProductStatus | null>(null)
   const [productImageFile, setProductImageFile] = useState<File | null>(null)
-  const [productImageUrl, setProductImageUrl] = useState<string>('')
+  const [productImageUrl, setProductImageUrl] = useState<string | null>(null)
+  const supabase = createClient()
   const queryClient = useQueryClient()
 
   useEffect(() => {
     if (product) {
       setProductStatus(product.status)
+      setProductImageUrl(product.image)
     }
   }, [product])
 
@@ -69,7 +72,7 @@ export default function Page({ params: { productId } }: PageProps) {
     mutationFn: editProductById,
     onSuccess() {
       queryClient.setQueryData(['productById', productId], (data: Product) => {
-        return { ...data, name, description, price, quantity, status: productStatus }
+        return { ...data, name, description, price, quantity, image: productImageUrl, status: productStatus }
       })
     }
   })
@@ -77,21 +80,45 @@ export default function Page({ params: { productId } }: PageProps) {
   const handleProductUpdate = async ({ name, description, price, quantity }: EditProductSchema) => {
     if (!errors.root) {
       try {
-        const { error } = await editProductByIdFn({
+        await uploadProductImage()
+        await editProductByIdFn({
           productId: Number(productId),
           name,
           description,
           price,
           quantity,
+          image: productImageUrl,
           status: productStatus
         })
-        if (!error) toast.success('Produto editado com sucesso')
+        toast.success('Produto editado com sucesso')
       } catch (error) {
         if (error instanceof Error) {
           toast.error(error.message)
         }
       }
     }
+  }
+
+  // TODO - solves the problem with upsert images
+  const uploadProductImage = async () => {
+    if (!productImageFile) return
+
+    const fileExtension = productImageFile.name.split('.').pop()
+    const filePath = `${Math.random()}-image.${fileExtension}`
+
+    const { data, error: uploadError } = await supabase.storage.from('products').upload(filePath, productImageFile)
+
+    if (uploadError) {
+      console.log(uploadError)
+      throw new Error('Não foi possível editar o produto')
+    }
+
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from('products').getPublicUrl(data.path)
+    const image = publicUrl
+
+    setProductImageUrl(image)
   }
 
   return (
@@ -207,7 +234,7 @@ export default function Page({ params: { productId } }: PageProps) {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="h-4 w-4 animate-spin" />
-                        <span className="text-white">Cadastrando produto</span>
+                        <span className="text-white">Editando produto</span>
                       </>
                     ) : (
                       <>
