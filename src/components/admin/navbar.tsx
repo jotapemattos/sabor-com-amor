@@ -3,11 +3,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger
+} from '../ui/alert-dialog'
+import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 
+import { signOut } from '@/app/actions/logoutComponent'
 import { cn } from '@/lib/utilsComponent'
 import { motion } from 'framer-motion'
-import { LayoutDashboard, Box, LineChart } from 'lucide-react'
+import { LayoutDashboard, Box, LineChart, LogOut, Loader2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 interface NavItems {
   title: string
@@ -39,6 +53,20 @@ export function AdminNavbar() {
 
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
   const [activeIdx, setActiveIdx] = useState<number>(0)
+  const [isPending, setIsPending] = useState(false)
+
+  const handleLogout = async () => {
+    try {
+      setIsPending(true)
+      await signOut()
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message)
+      }
+    } finally {
+      setIsPending(false)
+    }
+  }
 
   return (
     <aside className="fixed left-0 p-2 bg-zinc-200 border-zinc-300 h-full border flex flex-col items-start gap-6 rounded-e-2xl">
@@ -100,6 +128,40 @@ export function AdminNavbar() {
           )
         })}
       </nav>
+      <AlertDialog>
+        <AlertDialogTrigger className="flex items-center justify-start gap-2 p-2 rounded-md text-sm mt-auto w-full hover:bg-zinc-300 text-red-600 transition-all duration-300">
+          <LogOut className="size-5" />
+          <span>Sair</span>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Você tem certeza que deseja sair?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Essa ação não pode ser desfeita e um novo login será necessário.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="h-8">Cancelar</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Button
+                className="bg-red-500/10 text-red-500 hover:bg-red-500/20 h-8 border border-red-300"
+                onClick={handleLogout}
+                disabled={isPending}>
+                {isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Saindo...</span>
+                  </>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <LogOut className="size-5" /> Sair
+                  </span>
+                )}
+              </Button>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </aside>
   )
 }
