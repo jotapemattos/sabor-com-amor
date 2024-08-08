@@ -93,7 +93,7 @@ export function CreateProductDialog() {
           <PlusIcon size={16} />
           Novo produto
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="w-80 md:w-[600px] rounded-md">
           <DialogHeader>
             <DialogTitle>Adicionar produto</DialogTitle>
             <DialogDescription>

@@ -77,9 +77,9 @@ export default function Products() {
         </Breadcrumb>
       </header>
       <section className="w-full flex flex-col gap-10 items-center justify-center">
-        <header className="w-full flex items-center justify-between gap-4">
+        <header className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <Input
-            className="self-start h-8 w-96"
+            className="self-start h-8 w-full md:w-96"
             placeholder="Pesquisar por produto..."
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}

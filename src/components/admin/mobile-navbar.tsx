@@ -103,7 +103,7 @@ export function MobileNavBar() {
               <LogOut className="size-5" />
               <span>Sair</span>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="w-72 md:w-96 rounded-md">
               <AlertDialogHeader>
                 <AlertDialogTitle>Você tem certeza que deseja sair?</AlertDialogTitle>
                 <AlertDialogDescription>

@@ -20,6 +20,10 @@ export const columns: ColumnDef<Product>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
+    },
+    cell: ({ row }) => {
+      const { name } = row.original
+      return <span className="line-clamp-1">{name}</span>
     }
   },
   {
