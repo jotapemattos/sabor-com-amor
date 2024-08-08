@@ -62,8 +62,8 @@ export default function Products() {
   }
 
   return (
-    <div className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
-      <header className="flex justify-between items-center sticky top-6 w-full">
+    <div className="gap-16 flex flex-col p-4 lg:pl-72 h-screen w-full items-start lg:pr-12">
+      <header className="flex justify-between items-center top-6 w-full">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

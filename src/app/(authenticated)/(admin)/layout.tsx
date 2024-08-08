@@ -1,7 +1,8 @@
 import { geist, papyrus } from '../../fonts/index'
 
 import '../../../styles/globals.css'
-import { AdminNavbar } from '@/components/admin/navbarComponent'
+import { AdminSidebar } from '@/components/admin/admin-sidebarComponent'
+import { MobileNavBar } from '@/components/admin/mobile-navbarComponent'
 import Providers from '@/components/providersComponent'
 import clsx from 'clsx'
 import { Toaster } from 'sonner'
@@ -20,7 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={clsx(geist.className, papyrus.variable, 'antialiased bg-zinc-100 ')}>
         <Providers>
           <Toaster position="top-center" richColors />
-          <AdminNavbar />
+          <MobileNavBar />
+          <AdminSidebar />
           {children}
         </Providers>
       </body>
