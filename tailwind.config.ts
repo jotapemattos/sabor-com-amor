@@ -17,7 +17,7 @@ const config = {
         'noise-texture': 'url(/noise-texture.png)'
       },
       fontFamily: {
-        serif: ['var(--font-telma)']
+        serif: ['var(--font-papyrus)']
       },
       colors: {
         'brand-50': '#eff3ff',

@@ -2,9 +2,9 @@ import localFont from 'next/font/local'
 
 import { GeistSans } from 'geist/font/sans'
 
-export const telma = localFont({
-  src: './Telma-Regular.otf',
-  variable: '--font-telma'
+export const papyrus = localFont({
+  src: './papyrus.ttf',
+  variable: '--font-papyrus'
 })
 
 export const geist = GeistSans

@@ -1,4 +1,4 @@
-import { geist, telma } from '../../fonts/index'
+import { geist, papyrus } from '../../fonts/index'
 
 import '../../../styles/globals.css'
 import { AdminNavbar } from '@/components/admin/navbarComponent'
@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={clsx(geist.className, telma.variable, 'antialiased bg-zinc-100 ')}>
+      <body className={clsx(geist.className, papyrus.variable, 'antialiased bg-zinc-100 ')}>
         <Providers>
           <Toaster position="top-center" richColors />
           <AdminNavbar />
