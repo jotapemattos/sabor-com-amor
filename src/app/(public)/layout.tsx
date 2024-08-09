@@ -1,5 +1,8 @@
+import { geist, papyrus } from '../fonts'
+
 import '../../styles/globals.css'
-import { geist } from '../fonts'
+import { Navbar } from '@/components/site/navbarComponent'
+import clsx from 'clsx'
 
 export const metadata = {
   title: 'Sabor com Amor',
@@ -8,8 +11,14 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={geist.className}>
-      <body className="bg-zinc-900" suppressHydrationWarning={true}>
+    <html lang="pt-BR">
+      <body
+        className={clsx(
+          geist.className,
+          papyrus.variable,
+          'antialiased bg-noise-texture bg-zinc-100 flex flex-col justify-center items-center mt-4'
+        )}>
+        <Navbar />
         {children}
       </body>
     </html>

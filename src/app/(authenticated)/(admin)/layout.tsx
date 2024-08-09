@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={clsx(geist.className, papyrus.variable, 'antialiased bg-zinc-100 ')}>
+      <body className={clsx(geist.className, papyrus.variable, 'antialiased bg-zinc-100')}>
         <Providers>
           <Toaster position="top-center" richColors />
           <MobileNavBar />
