@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import { geist, papyrus } from '../../fonts/index'
 
 import '../../../styles/globals.css'
@@ -23,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Toaster position="top-center" richColors />
           <MobileNavBar />
           <AdminSidebar />
-          {children}
+          <Suspense>{children}</Suspense>
         </Providers>
       </body>
     </html>
