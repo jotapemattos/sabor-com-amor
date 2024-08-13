@@ -21,7 +21,7 @@ export function AdminProductCard({ product }: AdminProductCardProps) {
           <p className="text-base font-light">{product.quantity}</p>
           <p className="font-bold text-sm">R$ {product.price}</p>
         </div>
-        <span className="text-xs font-medium">Ingredientes: {product.description}</span>
+        <span className="text-xs font-medium hyphens-auto break-words">Ingredientes: {product.description}</span>
       </CardContent>
       <CardFooter>
         <ProductStatusBadge productStatus={product.status} />

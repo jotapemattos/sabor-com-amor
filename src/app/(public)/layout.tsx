@@ -1,6 +1,7 @@
 import { geist, papyrus } from '../fonts'
 
 import '../../styles/globals.css'
+import Providers from '@/components/providersComponent'
 import { Navbar } from '@/components/site/navbarComponent'
 import clsx from 'clsx'
 
@@ -18,8 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           papyrus.variable,
           'antialiased bg-noise-texture bg-zinc-100 flex flex-col justify-center items-center mt-4'
         )}>
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   )
