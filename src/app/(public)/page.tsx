@@ -6,10 +6,10 @@ import { MoveRight } from 'lucide-react'
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center items-center w-full max-w-screen-xl mx-auto gap-32 mt-24">
+    <main className="flex flex-col justify-center items-center w-full px-2 md:px-0 max-w-screen-md mx-auto gap-32 mt-24">
       <section className="flex flex-col items-center justify-center gap-14">
         <div className="text-center flex flex-col gap-3">
-          <h1 className="font-serif text-8xl text-brand-900 font-bold">Sabor com Amor</h1>
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-brand-900 font-bold">Sabor com Amor</h1>
           <span className="text-xl text-brand-600">
             Comida preparada com amor conquista <br /> paladar & coração
           </span>
@@ -26,40 +26,40 @@ export default function Home() {
         </Button>
       </section>
       <section className="relative w-full h-80 flex justify-center items-center">
-        <div className="absolute p-3 border-[1px] border-zinc-300 w-56 h-72 bg-zinc-50 rounded-2xl -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-10 -translate-x-60">
+        <div className="absolute p-2 lg:p-3 border-[1px] border-zinc-300 w-44 h-64 lg:w-56 lg:h-72 bg-zinc-50 rounded-2xl -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-10 -translate-y-24 md:-translate-x-52 lg:-translate-x-60 md:translate-y-0">
           <Image
-            src="/sabor-com-amor.jpeg"
+            src="/sabor-com-amor-1.jpeg"
             width={500}
             height={1000}
             alt="foto da feira"
-            className="aspect-[9/16] rounded-sm object-cover h-full"
+            className="aspect-[9/16] rounded-[8px] lg:rounded-sm object-cover h-full"
           />
         </div>
-        <div className="absolute p-3 border-[1px] border-zinc-300 w-56 h-72 bg-zinc-50 rounded-2xl rotate-6 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-20 -translate-x-14">
+        <div className="absolute p-2 lg:p-3 border-[1px] border-zinc-300 w-44 h-64 lg:w-56 lg:h-72 bg-zinc-50 rounded-2xl rotate-6 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-20 translate-y-24 md:-translate-x-10 lg:-translate-x-14 md:translate-y-0">
           <Image
-            src="/sabor-com-amor.jpeg"
+            src="/sabor-com-amor-2.jpeg"
             width={500}
             height={1000}
             alt="foto da feira"
-            className="aspect-[9/16] rounded-sm object-cover h-full"
+            className="aspect-[9/16] rounded-[8px] lg:rounded-sm object-cover h-full"
           />
         </div>
-        <div className="absolute p-3 border-[1px] border-zinc-300 w-56 h-72 bg-zinc-50 rounded-2xl -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-30 translate-x-28">
+        <div className="absolute p-2 lg:p-3 border-[1px] border-zinc-300 w-44 h-64 lg:w-56 lg:h-72 bg-zinc-50 rounded-2xl -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-30 translate-y-72 md:translate-x-24 lg:translate-x-28 md:translate-y-0">
           <Image
-            src="/sabor-com-amor.jpeg"
+            src="/sabor-com-amor-3.jpeg"
             width={500}
             height={1000}
             alt="foto da feira"
-            className="aspect-[9/16] rounded-sm object-cover h-full"
+            className="aspect-[9/16] rounded-[8px] lg:rounded-sm object-cover h-full"
           />
         </div>
-        <div className="absolute p-3 border-[1px] border-zinc-300 w-56 h-72 bg-zinc-50 rounded-2xl rotate-12 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-40 translate-x-64">
+        <div className="absolute p-2 lg:p-3 border-[1px] border-zinc-300 w-44 h-64 lg:w-56 lg:h-72 bg-zinc-50 rounded-2xl rotate-12 hover:rotate-0 hover:scale-105 transition-transform duration-200 ease-in-out z-40 translate-y-[500px] md:translate-x-60 lg:translate-x-64 md:translate-y-0">
           <Image
-            src="/sabor-com-amor.jpeg"
+            src="/sabor-com-amor-4.jpeg"
             width={500}
             height={1000}
             alt="foto da feira"
-            className="aspect-[9/16] rounded-sm object-cover h-full"
+            className="aspect-[9/16] rounded-[8px] lg:rounded-sm object-cover h-full"
           />
         </div>
       </section>

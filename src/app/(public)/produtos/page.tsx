@@ -1,14 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@/components/ui/buttonComponent'
 import { Input } from '@/components/ui/inputComponent'
 import { getProducts } from '@/utils/get-productsComponent'
 import { useQuery } from '@tanstack/react-query'
-import { MoveRight } from 'lucide-react'
 
 export default function Products() {
   const { data: initialProducts } = useQuery({
@@ -39,10 +36,10 @@ export default function Products() {
   }, [initialProducts, searchInput])
 
   return (
-    <main className="flex flex-col justify-center items-center w-full max-w-screen-xl mx-auto mt-16 gap-12 mb-24">
+    <main className="flex flex-col justify-center items-center w-full max-w-screen-xl mx-auto mt-16 gap-12 mb-24 px-4 md:px-0">
       <h1 className="text-center font-serif text-brand-900 text-4xl">Produtos</h1>
       <Input
-        className="h-8 w-full md:w-96"
+        className="h-8 w-80 md:w-96"
         placeholder="Pesquisar por produto..."
         value={searchInput}
         onChange={(event) => setSearchInput(event.target.value)}
@@ -70,7 +67,7 @@ export default function Products() {
                 </div>
                 <span className="text-xs text-zinc-800 break-words">Descrição: {product.description}</span>
               </div>
-              <footer className="flex flex-col gap-2 w-full px-4 pb-3 mt-auto">
+              {/* <footer className="flex flex-col gap-2 w-full px-4 pb-3 mt-auto">
                 <Button
                   asChild
                   className="group relative inline-flex h-10 px-6 items-center justify-center overflow-hidden rounded-md border border-brand-700 bg-gradient-to-b from-brand-500 via-brand-600 to-brand-700 px-4 text-neutral-50 shadow-[inset_0_1px_0px_0px_#93c5fd] hover:from-brand-700 hover:via-brand-700 hover:to-brand-700 active:[box-shadow:none]">
@@ -83,7 +80,7 @@ export default function Products() {
                     </div>
                   </Link>
                 </Button>
-              </footer>
+              </footer> */}
             </div>
           ) : null
         )}
