@@ -11,7 +11,7 @@ interface AdminProductCardProps {
 
 export function AdminProductCard({ product }: AdminProductCardProps) {
   return (
-    <Card className="w-96 rounded-md border border-zinc-300 shadow-md bg-zinc-100/20">
+    <Card className="xl:w-96 rounded-md border border-zinc-300 shadow-md bg-zinc-100/20">
       <CardHeader>
         <CardTitle>{product.name}</CardTitle>
       </CardHeader>
@@ -21,7 +21,7 @@ export function AdminProductCard({ product }: AdminProductCardProps) {
           <p className="text-base font-light">{product.quantity}</p>
           <p className="font-bold text-sm">R$ {product.price}</p>
         </div>
-        <span className="text-xs font-medium hyphens-auto break-words">Ingredientes: {product.description}</span>
+        <span className="text-xs font-medium hyphens-auto break-words">Descrição: {product.description}</span>
       </CardContent>
       <CardFooter>
         <ProductStatusBadge productStatus={product.status} />

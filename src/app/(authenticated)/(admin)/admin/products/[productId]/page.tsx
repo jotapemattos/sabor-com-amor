@@ -122,8 +122,8 @@ export default function Page({ params: { productId } }: PageProps) {
   }
 
   return (
-    <main className="gap-16 flex flex-col pl-72 h-screen w-full items-start pr-12">
-      <header className="flex justify-between items-center sticky w-full top-6">
+    <main className="gap-16 flex flex-col lg:pl-64 xl:pl-72 h-screen w-full items-start lg:pr-12 px-4">
+      <header className="flex justify-between items-center w-full mt-6">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -140,21 +140,21 @@ export default function Page({ params: { productId } }: PageProps) {
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <section className="w-full flex items-start">
+      <section className="w-full flex flex-col md:flex-row items-start gap-4">
         {product ? (
           <>
             <div className="w-full flex flex-col items-center justify-center gap-6">
-              <h1 className="text-2xl flex items-center text-start w-96 gap-2">
+              <h1 className="text-2xl flex items-center text-start xl:w-96 gap-2">
                 <Eye size={24} /> Visualização
               </h1>
               <AdminProductCard product={product} />
             </div>
-            <Separator className="h-full w-[1px] bg-zinc-200" />
+            <Separator className="w-full h-[1px] md:h-full md:w-[1px] bg-zinc-200" />
             <div className="w-full flex flex-col items-center justify-center gap-6">
-              <h1 className="text-2xl flex items-center gap-2 w-96 text-start">
+              <h1 className="text-2xl flex items-center gap-2 xl:w-96 text-start">
                 <PenTool size={24} /> Editar Produto
               </h1>
-              <form onSubmit={handleSubmit(handleProductUpdate)} className="w-96 space-y-6">
+              <form onSubmit={handleSubmit(handleProductUpdate)} className="xl:w-96 space-y-6 mb-12">
                 <div className="flex w-full items-center gap-2">
                   <span className="flex w-full flex-col items-start gap-2 text-sm md:text-base">
                     <label htmlFor="name">Nome do produto</label>
@@ -180,7 +180,7 @@ export default function Page({ params: { productId } }: PageProps) {
                   <Textarea
                     className="resize-none bg-zinc-100/20 focus-visible:ring-1 focus-visible:ring-brand-400 shadow-sm border-b-zinc-300"
                     defaultValue={product.description ?? ''}
-                    placeholder="Informe os ingredientes..."
+                    placeholder="Informações adicionais..."
                     {...register('description')}
                   />
                 </span>
