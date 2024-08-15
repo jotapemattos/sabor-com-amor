@@ -69,16 +69,6 @@ export function AdminSidebar() {
 
   return (
     <aside className="hidden lg:flex fixed left-0 p-2 bg-zinc-200 border-zinc-300 h-full border flex-col items-start gap-6 rounded-e-2xl">
-      {/* <div className="flex items-center justify-center gap-2 p-2">
-        <Image
-          src={'/logo.png'}
-          alt="logo image"
-          className="size-8 aspect-square object-cover"
-          width={500}
-          height={500}
-        />
-        <h1 className="font-serif text-xl text-center">Sabor com Amor - Admin</h1>
-      </div> */}
       <h1 className="p-2 font-serif text-xl text-center">Sabor com Amor</h1>
       <Separator className="bg-zinc-300" />
       <nav className="grid md:grid-rows-3 text-base items-start w-full gap-2">

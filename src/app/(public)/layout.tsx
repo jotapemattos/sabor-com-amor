@@ -8,7 +8,7 @@ import clsx from 'clsx'
 
 export const metadata = {
   title: 'Sabor com Amor',
-  description: 'Sabor com Amor landing page'
+  description: 'Sabor com Amor - Home'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

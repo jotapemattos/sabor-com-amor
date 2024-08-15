@@ -7,6 +7,10 @@ import { Input } from '@/components/ui/inputComponent'
 import { getProducts } from '@/utils/get-productsComponent'
 import { useQuery } from '@tanstack/react-query'
 
+export const metadata = {
+  title: 'Produtos'
+}
+
 export default function Products() {
   const { data: initialProducts } = useQuery({
     queryKey: ['products'],
@@ -46,7 +50,7 @@ export default function Products() {
           onChange={(event) => setSearchInput(event.target.value)}
         />
       </div>
-      <section className="w-full flex flex-wrap justify-center gap-20">
+      <section className="w-auto flex flex-wrap justify-center gap-20">
         {shownProducts?.map((product) =>
           product.status === 'disponível' ? (
             <div

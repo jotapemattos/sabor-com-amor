@@ -11,10 +11,7 @@ import { Toaster } from 'sonner'
 
 export const metadata = {
   title: 'Sabor com Amor - Admin',
-  description: 'Página de gerenciamento de produtos',
-  icons: {
-    icon: '/logo.png'
-  }
+  description: 'Página de gerenciamento de produtos'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

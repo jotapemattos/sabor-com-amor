@@ -5,10 +5,7 @@ import '../../../styles/globals.css'
 
 export const metadata = {
   title: 'Sabor com Amor - Login',
-  description: 'Página de login',
-  icons: {
-    icon: '/logo.png'
-  }
+  description: 'Página de login'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

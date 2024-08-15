@@ -19,6 +19,10 @@ import { Input } from '@/components/ui/inputComponent'
 import { getProducts } from '@/utils/get-productsComponent'
 import { useQuery } from '@tanstack/react-query'
 
+export const metadata = {
+  title: 'Tabela de produtos'
+}
+
 export default function Products() {
   const params = useSearchParams()
   const productStatus = params.get('status')
