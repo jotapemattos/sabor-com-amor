@@ -2,6 +2,7 @@ import { geist, papyrus } from '../fonts'
 
 import '../../styles/globals.css'
 import Providers from '@/components/providersComponent'
+import { Footer } from '@/components/site/footerComponent'
 import { Navbar } from '@/components/site/navbarComponent'
 import clsx from 'clsx'
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
