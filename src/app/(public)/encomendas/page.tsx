@@ -8,7 +8,9 @@ export default function Order() {
   return (
     <main className="w-full max-w-screen-md mx-auto flex flex-col items-center justify-center mt-16 gap-16 px-6">
       <section className="w-full text-center space-y-10">
-        <h1 className="text-5xl font-serif text-brand-900">Entre em contato e faça seu pedido!</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-900">
+          Entre em contato e faça seu pedido!
+        </h1>
         <p className="text-base text-zinc-700">
           Caso tenha criado interesse por algum de nossos produtos, não perca a oportunidade de fazer sua encomenda.
           Para isso basta enviar uma mensagem pelo WhatsApp informando o(s) produto(s) que deseja com a quantidade ao
