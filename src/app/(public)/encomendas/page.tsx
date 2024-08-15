@@ -4,10 +4,6 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/buttonComponent'
 import { MoveUpRight } from 'lucide-react'
 
-export const metadata = {
-  title: 'Encomendas'
-}
-
 export default function Order() {
   return (
     <main className="w-full max-w-screen-md mx-auto flex flex-col items-center justify-center mt-16 gap-16 px-6">

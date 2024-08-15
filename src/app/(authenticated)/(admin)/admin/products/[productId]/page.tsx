@@ -36,10 +36,6 @@ interface PageProps {
 
 type ProductStatus = 'disponível' | 'arquivado'
 
-export const metadata = {
-  title: 'Edição de Produtos'
-}
-
 export default function Page({ params: { productId } }: PageProps) {
   const { data: product } = useQuery({
     queryKey: ['productById', productId],

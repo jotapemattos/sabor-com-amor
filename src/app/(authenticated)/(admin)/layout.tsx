@@ -10,7 +10,10 @@ import clsx from 'clsx'
 import { Toaster } from 'sonner'
 
 export const metadata = {
-  title: 'Sabor com Amor - Admin',
+  title: {
+    default: 'Sabor com Amor',
+    template: '%s | Sabor com Amor'
+  },
   description: 'Página de gerenciamento de produtos'
 }
 

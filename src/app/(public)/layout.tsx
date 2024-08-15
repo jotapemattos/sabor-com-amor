@@ -7,8 +7,11 @@ import { Navbar } from '@/components/site/navbarComponent'
 import clsx from 'clsx'
 
 export const metadata = {
-  title: 'Sabor com Amor',
-  description: 'Sabor com Amor - Home'
+  title: {
+    default: 'Sabor com Amor',
+    template: '%s | Sabor com Amor'
+  },
+  description: 'Encontre e experimente deliciosos produtos artesanais.'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

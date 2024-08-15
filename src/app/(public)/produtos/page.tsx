@@ -7,10 +7,6 @@ import { Input } from '@/components/ui/inputComponent'
 import { getProducts } from '@/utils/get-productsComponent'
 import { useQuery } from '@tanstack/react-query'
 
-export const metadata = {
-  title: 'Produtos'
-}
-
 export default function Products() {
   const { data: initialProducts } = useQuery({
     queryKey: ['products'],

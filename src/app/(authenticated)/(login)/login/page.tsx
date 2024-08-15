@@ -3,6 +3,10 @@ import { redirect } from 'next/navigation'
 import { Form } from '@/components/login/formComponent'
 import { createClient } from '@/supabase/serverComponent'
 
+export const metadata = {
+  title: 'Login'
+}
+
 export default async function Login() {
   const supabase = createClient()
   const {

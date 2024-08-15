@@ -4,7 +4,10 @@ import { Toaster } from 'sonner'
 import '../../../styles/globals.css'
 
 export const metadata = {
-  title: 'Sabor com Amor - Login',
+  title: {
+    default: 'Sabor com Amor',
+    template: '%s | Sabor com Amor'
+  },
   description: 'Página de login'
 }
 
