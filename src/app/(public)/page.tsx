@@ -14,7 +14,7 @@ export default function Home() {
             alt=""
             width={500}
             height={1000}
-            className="absolute left-0 w-40 h-64 -top-40 -rotate-6 -left-40"
+            className="absolute w-40 h-64 -top-40 -rotate-6 -left-40"
           />
           <h1 className="font-serif text-5xl md:text-7xl xl:text-8xl text-brand-900 font-bold">Sabor com Amor</h1>
           <span className="text-lg xl:text-xl text-brand-600">
