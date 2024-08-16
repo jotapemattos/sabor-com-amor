@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Input } from '@/components/ui/inputComponent'
 import { getProducts } from '@/utils/get-productsComponent'
@@ -13,11 +13,28 @@ export default function Products() {
     queryFn: getProducts
   })
 
-  const [shownProducts, setShownProducts] = useState(initialProducts)
+  const filteredProducts = useMemo(() => {
+    if (initialProducts) {
+      return initialProducts.sort((a, b) => {
+        const aStartsWithPao = a.name?.normalize('NFD').toLowerCase().startsWith('p')
+        const bStartsWithPao = b.name?.normalize('NFD').toLowerCase().startsWith('p')
+
+        if (aStartsWithPao && !bStartsWithPao) {
+          return -1
+        } else if (!aStartsWithPao && bStartsWithPao) {
+          return 1
+        }
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return a.name!.localeCompare(b.name!)
+      })
+    }
+  }, [initialProducts])
+
+  const [shownProducts, setShownProducts] = useState(filteredProducts)
   const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
-    let products = initialProducts
+    let products = filteredProducts
     if (searchInput !== '' && products) {
       products = products.filter((product) => {
         if (!product.name) return
@@ -33,7 +50,7 @@ export default function Products() {
       })
     }
     setShownProducts(products)
-  }, [initialProducts, searchInput])
+  }, [filteredProducts, searchInput])
 
   return (
     <main className="flex flex-col justify-center items-center w-full max-w-screen-xl mx-auto mt-16 gap-12 mb-24 px-4 md:px-0">
