@@ -8,16 +8,20 @@ export default function Home() {
   return (
     <main className="flex flex-col justify-center items-center w-full px-2 md:px-0 max-w-screen-md mx-auto gap-24 mt-20">
       <section className="flex flex-col items-center justify-center gap-14">
-        <div className="text-center flex flex-col gap-3 relative">
-          <Image
-            src="/dandelion.png"
-            alt=""
-            width={500}
-            height={1000}
-            className="absolute w-40 h-64 -top-40 -rotate-6 -left-40"
-          />
-          <h1 className="font-serif text-5xl md:text-7xl xl:text-8xl text-brand-900 font-bold">Sabor com Amor</h1>
-          <span className="text-lg xl:text-xl text-brand-600">
+        <div className="text-center flex flex-col items-center relative w-full">
+          <div className="flex items-center justify-center relative">
+            <Image
+              src="/dandelion.png"
+              alt=""
+              width={160}
+              height={256}
+              className="w-16 h-24 sm:w-20 sm:h-32 md:w-32 md:h-52 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full -rotate-6 opacity-70"
+            />
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl xl:text-8xl text-brand-900 font-bold">
+              Sabor com Amor
+            </h1>
+          </div>
+          <span className="text-base sm:text-lg xl:text-xl text-brand-600 mt-3">
             Comida preparada com amor conquista <br /> paladar & coração
           </span>
         </div>
