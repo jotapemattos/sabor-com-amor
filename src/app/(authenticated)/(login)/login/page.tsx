@@ -13,7 +13,7 @@ export default async function Login() {
     data: { user }
   } = await supabase.auth.getUser()
 
-  if (user) redirect('/dashboard')
+  if (user) redirect('/admin/products')
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-24">
