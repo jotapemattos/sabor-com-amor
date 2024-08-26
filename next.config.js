@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'vugczgvubmxqvffdukjv.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/products/**'
+      }
+    ]
   }
-};
+}
 
 // eslint-disable-next-line no-undef
-module.exports = nextConfig;
+module.exports = nextConfig
